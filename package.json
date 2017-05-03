@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/raymeibaum/event-planner/issues"
   },
-  "homepage": "https://github.com/raymeibaum/event-planner#readme"
+  "homepage": "https://github.com/raymeibaum/event-planner#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.0-rc.1"
+  }
 }
