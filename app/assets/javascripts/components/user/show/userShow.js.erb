@@ -13,7 +13,7 @@ function UserShowController($http, $stateParams) {
   vm.user = [];
   vm.message = "Testing User";
 
-  $http.get('/api/users/:id').then(function(resp) {
+  $http.get('/api/users/' + $stateParams.id).then(function(resp) {
     console.log(resp.data);
     vm.user = resp.data;
   })
