@@ -24,39 +24,22 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+						<li><%= link_to 'Home', root_path %></li>
+		        <li><%= link_to 'Edit account', edit_user_registration_path, target: '_self' %></li>
+		        <li><%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %></li>
           </ul>
         </div>
       </div>
     </nav>
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
-      <% end %>
-    </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <h1>This is our Front end</h1>
-
-    <ui-view></ui-view>
+		<div class="container">
+			<% if notice %>
+				<p class="alert alert-success"><%= notice %></p>
+			<% end %>
+			<% if alert %>
+				<p class="alert alert-danger"><%= alert %></p>
+			<% end %>
+			<ui-view></ui-view>
+		</div>
 
 		<!-- Footer -->
 		<footer class="footer">
