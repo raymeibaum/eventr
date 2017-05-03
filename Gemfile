@@ -36,6 +36,8 @@ gem 'angular_rails_csrf'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
+gem 'font-awesome-sass', '~> 4.7.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
