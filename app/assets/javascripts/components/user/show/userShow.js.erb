@@ -1,0 +1,24 @@
+angular
+  .module('eventPlanner')
+  .component('userShow', {
+    templateUrl: '<%= asset_path("components/user/show/userShow") %>',
+    controller: UserShowController
+  });
+
+UserShowController.$inject = ['$stateParams'];
+
+function UserShowController($stateParams) {
+  var vm = this;
+
+  vm.loadUser = loadUser
+
+	activate()
+
+	function activate() {
+		loadUser()
+	}
+
+	function loadUser() {
+		
+	}
+}
