@@ -25,7 +25,11 @@ angular
       .state('home', {
         url: '/',
         component: 'home'
-      });
+      })
+			.state('userShow', {
+				url: '/users/:id',
+				component: 'userShow'
+			});
 
     // default fall back route
     $urlRouterProvider.otherwise('/');

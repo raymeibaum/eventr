@@ -31,7 +31,7 @@
 					</ul>
           <ul class="nav navbar-nav navbar-right">
 						<li><%= link_to icon('home') + " Home", root_path %></li>
-						<li><%= link_to icon('user') + " Profile", user_path(current_user), target: '_self' %></li>
+						<li><a ui-sref="userShow({id: <%= current_user.id %> })"><%= icon('user') %> Profile</a></li>
 		        <li><%= link_to icon('sign-out') + " Sign out", destroy_user_session_path, method: 'delete', target: '_self' %></li>
           </ul>
         </div>
