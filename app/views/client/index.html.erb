@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AngularOnRails</title>
     <%= csrf_meta_tags %>
 
@@ -21,6 +24,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Project name</a>
+					<p class="navbar-text">Logged in as: <%= link_to current_user.email, user_path(current_user) %></p>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -49,6 +53,6 @@
         <p class="text-muted">Place sticky footer content here.</p>
       </div>
     </footer>
-		
+
   </body>
 </html>
