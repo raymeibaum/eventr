@@ -1,21 +1,30 @@
 <div class="userShow">
-	<h1>Welcome to your account !</h1>
+	<h1>Welcome to your account {{$ctrl.message}}!</h1>
 </div>
 <br>
 
 <div class="row">
+
 	<div class="user-profile col col-md-6">
-		<ul>
-			<h4>Your Account Information</h4>
-			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
-			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
-			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </li>
-		</ul>
-		<input type="submit" class="btn btn-default" value="Edit Account">
+		<h4>Your Account Information</h4>
+	
+			<ul>
+				<!-- THESE ARE NOT CREATED IN TABLE - TO BE CREATED -->
+				<li><b>First Name:</b></li>
+				<li><b>Last Name:</b></li>
+				<li><b>Email:</b> {{$ctrl.user.email}} </li>
+			</ul>
+
 	</div>
+
 	<div class="user-events col col-md-6">
 		<h4>Your Saved Events</h4>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
 
 </div>
+<hr>
+
+<form action="/users/edit">
+	<input type="submit" class="btn btn-default" value="Edit Account">
+</form>

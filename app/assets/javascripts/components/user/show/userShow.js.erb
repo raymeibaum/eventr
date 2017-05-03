@@ -5,20 +5,28 @@ angular
     controller: UserShowController
   });
 
-UserShowController.$inject = ['$stateParams'];
+UserShowController.$inject = ['$http', '$stateParams'];
 
-function UserShowController($stateParams) {
+function UserShowController($http, $stateParams) {
   var vm = this;
 
-  vm.loadUser = loadUser
+  vm.user = [];
+  vm.message = "Testing User";
 
-	activate()
+  $http.get('/api/users/:id').then(function(resp) {
+    console.log(resp.data);
+    vm.user = resp.data;
+  })
 
-	function activate() {
-		loadUser()
-	}
+	// activate()
+  //
+	// function activate() {
+	// 	loadUser()
+	// }
+  //
+	// function loadUser() {
+  //
+	// }
 
-	function loadUser() {
-		
-	}
+
 }
