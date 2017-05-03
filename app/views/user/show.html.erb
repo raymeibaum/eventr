@@ -1,0 +1,32 @@
+<h2 class="profile-intro">Welcome to your account <%= current_user.first_name%> !</h2>
+<br>
+
+<div class="row user-profile">
+    <div class="user-information col col-md-4">
+        <h4>Profile Information</h4>
+        <br>
+        <h6><b>Profile Image:</b><br>
+        <img src="<%= current_user.photo_url %>" alt="" width="250px">
+        <h6><b>Joined:<b> <%= current_user.created_at.strftime("%x") %></h6>
+        <h6><b>First Name:</b> <%= current_user.first_name %></h6>
+        <h6><b>Last Name:</b> <%= current_user.last_name %></h6>
+        <h6><b>Email:</b> <%= current_user.email %></h6>
+        <br>
+        <a class="btn btn-default" href="/users/edit">EDIT ACCOUNT</a>
+    </div>
+
+    <div class="col col-md-8 user-content">
+        <h4>Your posts:</h4>
+        <br>
+        <ul>
+            <% @posts.each do |post| %>
+                <h5><%= post.title %></h5>
+                <li>Post: <%= post.content %></li>
+                <li><small>Posted: <%= time_ago_in_words(post.created_at)%></small></li>
+                <a class="btn btn-default" href="/cities/<%= post.city_id %>/posts/<%= post.id %>/edit">EDIT</a>
+                <a class="btn btn-danger" href="/cities/<%= post.city_id %>/posts/<%= post.id %>">DELETE</a>
+                <hr>
+            <% end %>
+        </ul>
+    </div>
+</div>
