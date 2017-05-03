@@ -10,7 +10,12 @@ UserShowController.$inject = ['$stateParams'];
 function UserShowController($stateParams) {
   var vm = this;
 
-  vm.loadUser = loadUser
+  vm.loadUser = loadUser;
+  vm.message = "Testing User";
+
+  // $http.get('/api/users').then(function(resp) {
+  //   loadUser = resp.data;
+  // })
 
 	activate()
 
@@ -19,6 +24,5 @@ function UserShowController($stateParams) {
 	}
 
 	function loadUser() {
-		
 	}
 }
