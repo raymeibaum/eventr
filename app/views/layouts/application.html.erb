@@ -29,6 +29,8 @@
         </div>
       </div>
     </nav>
+
+		<!-- Main content -->
 		<div class="container">
 			<% if notice %>
 				<p class="alert alert-success"><%= notice %></p>
@@ -38,5 +40,13 @@
 			<% end %>
 			<%= yield %>
 		</div>
+
+		<!-- Footer -->
+		<footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+		
   </body>
 </html>
