@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  photo_url: MyString
+  venue_name: MyString
+  venue_address: MyString
+  venue_city: MyString
+  venue_state: MyString
+  venue_zip: MyString
+  latitude: MyString
+  longitude: MyString
+  date: MyString
+  start_time: MyString
+  end_time: MyString
+
+two:
+  title: MyString
+  content: MyText
+  photo_url: MyString
+  venue_name: MyString
+  venue_address: MyString
+  venue_city: MyString
+  venue_state: MyString
+  venue_zip: MyString
+  latitude: MyString
+  longitude: MyString
+  date: MyString
+  start_time: MyString
+  end_time: MyString
