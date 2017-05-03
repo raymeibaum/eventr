@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/profile' => 'user#show'
+  # get '/profile' => 'user#show'
 
 	namespace :api do
     resources :users, only: [:show]
