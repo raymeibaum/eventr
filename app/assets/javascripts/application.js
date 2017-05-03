@@ -24,7 +24,7 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        component: 'homePage'
+        component: 'home'
       });
 
     // default fall back route
