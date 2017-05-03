@@ -1,0 +1,14 @@
+angular
+  .module('eventPlanner')
+  .component('homePage', {
+    templateUrl: '<%= asset_path("components/home/home") %>',
+    controller: HomeController
+  });
+
+HomeController.$inject = [];
+
+function HomeController() {
+  var vm = this;
+
+  vm.message = 'Hello World!';
+}
