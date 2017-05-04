@@ -1,0 +1,13 @@
+angular
+  .module('eventPlanner')
+  .component('eventShow', {
+    templateUrl: '<%= asset_path("components/event/show/eventShow") %>',
+    controller: EventShowController
+  });
+
+EventShowController.$inject = ['EventService'];
+
+function EventShowController(EventService) {
+  var vm = this;
+
+}
