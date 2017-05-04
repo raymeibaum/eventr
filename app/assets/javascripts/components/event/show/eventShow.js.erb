@@ -5,9 +5,25 @@ angular
     controller: EventShowController
   });
 
-EventShowController.$inject = ['EventService'];
+EventShowController.$inject = ['$http', '$stateParams', 'EventService'];
 
-function EventShowController(EventService) {
+function EventShowController($http, $stateParams, EventService) {
   var vm = this;
+
+  vm.event = [];
+  vm.message = "Testing User";
+
+	activate()
+
+	function activate() {
+		showUser()
+	}
+
+	function showUser() {
+    $http.get('/api/events/').then(function(resp) {
+      console.log(resp.data);
+      vm.event = resp.data;
+    })
+	}
 
 }

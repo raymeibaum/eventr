@@ -9,7 +9,6 @@ function EventService($http) {
 
   self.getCategories = getCategories;
   self.getEvents = getEvents;
-  // self.showEvents = showEvents;
 
   function getCategories() {
     return $http.get('/api/events/categories');
