@@ -17,7 +17,4 @@ function EventService($http) {
   function getEvents(latlng, category) {
     return $http.get(`/api/events?latlng=${latlng}&category=${category}`);
   }
-  function showEvents(id) {
-    return $http.get(`/api/events?id=${id}`);
-  }
 }
