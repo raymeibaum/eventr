@@ -4,21 +4,21 @@
 			<div class="page-header">
 				<h1 ng-bind="$ctrl.currentLocation"></h1>
 			</div>
-			{{$ctrl.selectedCategory}}
+			<h3>google map</h3>
 		</div>
 		<div class="col-sm-4">
 			<div class="page-header">
 				<h1>Events</h1>
 			</div>
-			<p>Category</p>
 			<select
 				class="form-control"
 				ng-model="$ctrl.selectedCategory"
-				ng-change="$ctrl.getEventsForCategory()">
-				<option value="" >Select category</option>
+				ng-change="$ctrl.getEventsForCategory()"
+				ng-disabled="$ctrl.categoryDisabled">
+				<option value="">Select category</option>
 			  <option value="all">all</option>
-				<!-- TODO: Filter categories to remove html escaping -->
-			  <option ng-repeat="category in $ctrl.categories" value="{{category}}">{{category}}</option>
+				<!-- TODO: Sanitize category.name to display & correctly-->
+			  <option ng-repeat="category in $ctrl.categories" value="{{category.id}}">{{category.name}}</option>
 			</select>
 			<hr>
 			<ul class="list-unstyled">

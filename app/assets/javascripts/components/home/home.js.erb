@@ -5,12 +5,13 @@ angular
     controller: HomeController
   });
 
-HomeController.$inject = ['EventService','LocationService', '$http'];
+HomeController.$inject = ['EventService','LocationService'];
 
-function HomeController(EventService, LocationService, $http) {
+function HomeController(EventService, LocationService) {
   var vm = this;
 
   vm.categories = [];
+	vm.categoryDisabled = true;
   vm.currentLocation = "Getting current location..";
   vm.eventsList = [];
   vm.latlng = "";
@@ -27,29 +28,28 @@ function HomeController(EventService, LocationService, $http) {
 
     LocationService
       .getUserLocation()
-      .then(reverseGeocodeAndGetEvents);
+      .then(reverseGeocodeLocation);
   }
-  function reverseGeocodeAndGetEvents(position) {
+  function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     vm.latlng = `${latitude}, ${longitude}`;
-    console.log(vm.latlng);
+
+		// Enabling category selector here now that we have an accurate postion
+		vm.categoryDisabled = false;
 
     LocationService
       .reverseGeocodeLocation(vm.latlng)
       .then(function setCurrentLocation(response) {
-        vm.currentLocation = response.data.results[1].formatted_address;
+        vm.currentLocation = response.data.results[4].formatted_address;
       })
-
-    EventService
-      .getEvents(vm.latlng)
-      .then()
   }
   function updateCategories(categories) {
-    vm.categories = []
+    vm.categories = [];
     categories.data.forEach(function(category) {
-      vm.categories.push(category.name);
+      vm.categories.push(category);
     });
+
   }
   function getEventsForCategory() {
     EventService
@@ -57,6 +57,7 @@ function HomeController(EventService, LocationService, $http) {
       .then(updateEventsList);
   }
   function updateEventsList(events) {
+		console.log(events.data);
     vm.eventsList = [];
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
