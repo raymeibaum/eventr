@@ -18,7 +18,7 @@
 				<option value="" >Select category</option>
 			  <option value="all">all</option>
 				<!-- TODO: Filter categories to remove html escaping -->
-			  <option ng-repeat="category in $ctrl.categories" value="{{category}}">{{category}}</option>
+			  <option ng-repeat="category in $ctrl.categories" value="{{category.id}}">{{category.name}}</option>
 			</select>
 			<hr>
 			<ul class="list-unstyled">
