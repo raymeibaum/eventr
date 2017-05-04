@@ -4,7 +4,7 @@
 			<div class="page-header">
 				<h1 ng-bind="$ctrl.currentLocation"></h1>
 			</div>
-			<h3>google map</h3>
+			<h3>Google Map</h3>
 		</div>
 		<div class="col-sm-4">
 			<div class="page-header">
@@ -18,7 +18,7 @@
 				<option value="">Select category</option>
 			  <option value="all">all</option>
 				<!-- TODO: Sanitize category.name to display & correctly-->
-			  <option ng-repeat="category in $ctrl.categories" value="{{category.id}}">{{category.name}}</option>
+			  <option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
 			</select>
 			<hr>
 			<ul class="list-unstyled">
