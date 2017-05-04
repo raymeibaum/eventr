@@ -1,10 +1,12 @@
 class Api::EventsController < ApplicationController
-	def index
+	def events
 		@events = Event.get_events()
 
 		render json: @events
 	end
-	def show
+	def categories
+		@categories = Event.get_categories()
 
+		render json: @categories
 	end
 end

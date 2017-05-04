@@ -5,10 +5,46 @@ angular
     controller: HomeController
   });
 
-HomeController.$inject = [];
+HomeController.$inject = ['EventService','LocationService', '$http'];
 
-function HomeController() {
+function HomeController(EventService, LocationService, $http) {
   var vm = this;
 
-  vm.message = 'Hello World!';
+  vm.categories = [];
+  vm.currentLocation = "Getting current location.."
+
+  activate();
+
+  function activate() {
+    EventService
+      .getCategories()
+      .then(updateCategories);
+
+    LocationService
+      .getUserLocation()
+      .then(reverseGeocodeAndGetEvents);
+  }
+  function reverseGeocodeAndGetEvents(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const latlng = `${latitude}, ${longitude}`;
+
+    LocationService
+      .reverseGeocodeLocation(latlng)
+      .then(function setCurrentLocation(response) {
+        vm.currentLocation = response.data.results[1].formatted_address;
+      })
+
+    // EventService
+    //   .getEvents(latlng, category)
+    //   .then()
+  }
+  function updateCategories(categories) {
+    console.log(categories);
+    vm.categories = []
+    categories.data.forEach(function(category) {
+      vm.categories.push(category.name);
+    });
+    console.log(vm.categories);
+  }
 }

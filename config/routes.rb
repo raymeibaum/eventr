@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get '/profile' => 'user#show'
 
 	namespace :api do
     resources :users, only: [:show]
 		resources :comments
 		resources :favorites
-		resources :events, only: [:index, :show]
+
+    get 'events/categories', to: 'events#categories'
+    get 'events', to: 'events#events'
   end
 
 	root to: 'client#index'
