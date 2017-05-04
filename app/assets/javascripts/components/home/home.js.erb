@@ -5,9 +5,9 @@ angular
     controller: HomeController
   });
 
-HomeController.$inject = ['EventService','LocationService'];
+HomeController.$inject = ['$sce','EventService','LocationService'];
 
-function HomeController(EventService, LocationService) {
+function HomeController($sce, EventService, LocationService) {
   var vm = this;
 
   vm.categories = [];
@@ -41,6 +41,7 @@ function HomeController(EventService, LocationService) {
     LocationService
       .reverseGeocodeLocation(vm.latlng)
       .then(function setCurrentLocation(response) {
+				console.log(response);
         vm.currentLocation = response.data.results[4].formatted_address;
       })
   }
