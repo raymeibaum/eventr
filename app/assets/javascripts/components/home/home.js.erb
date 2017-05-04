@@ -41,16 +41,15 @@ function HomeController($sce, EventService, LocationService) {
     LocationService
       .reverseGeocodeLocation(vm.latlng)
       .then(function setCurrentLocation(response) {
-				console.log(response);
         vm.currentLocation = response.data.results[4].formatted_address;
       })
   }
   function updateCategories(categories) {
     vm.categories = [];
+		console.log("categories", categories);
     categories.data.forEach(function(category) {
       vm.categories.push(category);
     });
-
   }
   function getEventsForCategory() {
     EventService
@@ -58,7 +57,6 @@ function HomeController($sce, EventService, LocationService) {
       .then(updateEventsList);
   }
   function updateEventsList(events) {
-		console.log(events.data);
     vm.eventsList = [];
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
