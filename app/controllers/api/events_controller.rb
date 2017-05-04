@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
 	def events
-		@events = Event.get_events()
+		@events = Event.get_events(params[:latlng], params[:category])
 
 		render json: @events
 	end

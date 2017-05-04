@@ -11,9 +11,9 @@ function EventService($http) {
   self.getEvents = getEvents;
 
   function getCategories() {
-    return $http.get('/api/events/categories')
+    return $http.get('/api/events/categories');
   }
   function getEvents(latlng, category) {
-    return $http.get('/api/events')
+    return $http.get(`/api/events?latlng=${latlng}&category=${category}`);
   }
 }

@@ -4,11 +4,29 @@
 			<div class="page-header">
 				<h1 ng-bind="$ctrl.currentLocation"></h1>
 			</div>
+			{{$ctrl.selectedCategory}}
 		</div>
 		<div class="col-sm-4">
 			<div class="page-header">
 				<h1>Events</h1>
 			</div>
+			<p>Category</p>
+			<select
+				class="form-control"
+				ng-model="$ctrl.selectedCategory"
+				ng-change="$ctrl.getEventsForCategory()">
+				<option value="" >Select category</option>
+			  <option value="all">all</option>
+				<!-- TODO: Filter categories to remove html escaping -->
+			  <option ng-repeat="category in $ctrl.categories" value="{{category}}">{{category}}</option>
+			</select>
+			<hr>
+			<ul class="list-unstyled">
+				<li ng-repeat="event in $ctrl.eventsList">
+					{{event.title}}
+					<hr>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>

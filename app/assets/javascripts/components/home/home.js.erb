@@ -11,7 +11,12 @@ function HomeController(EventService, LocationService, $http) {
   var vm = this;
 
   vm.categories = [];
-  vm.currentLocation = "Getting current location.."
+  vm.currentLocation = "Getting current location..";
+  vm.eventsList = [];
+  vm.latlng = "";
+  vm.selectedCategory = "";
+
+  vm.getEventsForCategory = getEventsForCategory;
 
   activate();
 
@@ -27,24 +32,34 @@ function HomeController(EventService, LocationService, $http) {
   function reverseGeocodeAndGetEvents(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const latlng = `${latitude}, ${longitude}`;
+    vm.latlng = `${latitude}, ${longitude}`;
+    console.log(vm.latlng);
 
     LocationService
-      .reverseGeocodeLocation(latlng)
+      .reverseGeocodeLocation(vm.latlng)
       .then(function setCurrentLocation(response) {
         vm.currentLocation = response.data.results[1].formatted_address;
       })
 
-    // EventService
-    //   .getEvents(latlng, category)
-    //   .then()
+    EventService
+      .getEvents(vm.latlng)
+      .then()
   }
   function updateCategories(categories) {
-    console.log(categories);
     vm.categories = []
     categories.data.forEach(function(category) {
       vm.categories.push(category.name);
     });
-    console.log(vm.categories);
+  }
+  function getEventsForCategory() {
+    EventService
+      .getEvents(vm.latlng, vm.selectedCategory)
+      .then(updateEventsList);
+  }
+  function updateEventsList(events) {
+    vm.eventsList = [];
+    events.data.forEach(function(event) {
+      vm.eventsList.push(event);
+    })
   }
 }
