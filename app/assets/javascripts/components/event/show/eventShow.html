@@ -1,13 +1,14 @@
 
 <div class="row">
-  <div class="col col-md-6">
-    <h1>{{$ctrl.event.title}}</h1>
-    <h4>{{$ctrl.event.venue_name}}</h4>
-    <h5>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h5>
+  <div class="col col-md-8">
+    <h2>{{$ctrl.event.title}}</h2>
+    <br>
+    <h5>{{$ctrl.event.venue_name}}</h5>
+    <h6>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h6>
     <br>
     <img src="{{$ctrl.event.images.image.medium.url}}" alt="Event Image" width="250px">
     <br>
-
+    <br>
     <div class="social-media">
       <h5>Share with friends</h5>
 
@@ -19,8 +20,8 @@
     <hr>
     <h6><b>Category:</b> <a href="/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6>
   </div>
-  <div class="col col-md-6">
-    <h2>Event Details:</h2>
+  <div class="event-details col col-md-4">
+    <h3>Event Details:</h3>
     <p>{{$ctrl.event.description}}</p> <br>
 
     <h5>When:</h5>
