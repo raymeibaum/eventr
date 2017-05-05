@@ -46,7 +46,6 @@ function HomeController($sce, EventService, LocationService) {
   }
   function updateCategories(categories) {
     vm.categories = [];
-		console.log("categories", categories);
     categories.data.forEach(function(category) {
       vm.categories.push(category);
     });
