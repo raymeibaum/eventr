@@ -13,22 +13,24 @@
 			</div>
 			<div class="categories">
 				<select
-				class="form-control"
-				ng-model="$ctrl.selectedCategory"
-				ng-change="$ctrl.getEventsForCategory()"
-				ng-disabled="$ctrl.categoryDisabled">
-				<option value="">Select category</option>
-				<option value="all">all</option>
-				<!-- TODO: Sanitize category.name to display & correctly-->
-				<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
-			</select>
-			<hr>
-			<ul class="list-unstyled">
-				<li ng-repeat="event in $ctrl.eventsList">
-					<a href="/events/{{event.id}}">{{event.title}}</a>
-					<hr>
-				</li>
-			</ul>
+					class="form-control"
+					ng-model="$ctrl.selectedCategory"
+					ng-change="$ctrl.getEventsForCategory()"
+					ng-disabled="$ctrl.categoryDisabled">
+					<option value="">Select category</option>
+					<option value="all">all</option>
+					<!-- TODO: Sanitize category.name to display & correctly-->
+					<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
+				</select>
+				<hr>
+				<div class="events-list">
+					<ul class="list-unstyled">
+						<li ng-repeat="event in $ctrl.eventsList">
+							<a href="/events/{{event.id}}">{{event.title}}</a>
+							<hr>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

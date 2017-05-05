@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
+//= require angular/angular
 //= require angular-ui-router/release/angular-ui-router
 //= require bootstrap-sprockets
 //= require_self
