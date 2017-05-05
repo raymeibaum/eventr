@@ -32,9 +32,31 @@ body {
   margin: 60px 0;
 }
 
+
+.login-content {
+    width: 400px;
+    padding: 50px;
+    padding-left: 100px;
+    border-left: thin solid #000;
+}
+
+.login-logo {
+    width: 200px;
+    align-items: center;
+    margin: 30px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.actions {
+    text-align: left;
+
 nav .container {
   margin: 0px !important;
   width: 100%;
+
 }
 
 .footer {
@@ -45,6 +67,7 @@ nav .container {
   height: 60px;
   background-color: #f5f5f5;
 }
+
 .text-muted {
   margin: 20px 0;
   text-align: center;
