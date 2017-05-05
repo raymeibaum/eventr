@@ -78,10 +78,10 @@ function HomeController($sce, EventService, LocationService) {
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
     });
-
 		// Reset map to default
 		vm.mapLatLng = vm.defaultLatLng;
 		vm.mapZoom = vm.defaultZoom;
+
   }
 	function displayErrorMessage(error) {
 		console.log(error);
