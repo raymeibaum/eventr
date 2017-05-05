@@ -52,13 +52,17 @@ function HomeController($sce, EventService, LocationService) {
   }
   function getEventsForCategory() {
     EventService
-      .getEvents(vm.latlng, vm.selectedCategory)
-      .then(updateEventsList);
+      .getEventsForCategory(vm.latlng, vm.selectedCategory)
+      .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {
+		console.log(events);
     vm.eventsList = [];
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
     })
   }
+	function displayErrorMessage(error) {
+		console.log(error);
+	}
 }
