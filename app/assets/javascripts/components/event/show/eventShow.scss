@@ -1,0 +1,22 @@
+.fa {
+  padding: 10px 12px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.fa-facebook, .fa-twitter, .fa-google, .fa-linkedin, .fa-instagram, .fa-pinterest {
+  background: #555;
+  color: white;
+}
