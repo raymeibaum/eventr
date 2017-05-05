@@ -14,7 +14,11 @@ function HomeController($sce, EventService, LocationService) {
 	vm.categoryDisabled = true;
   vm.currentLocation = "Getting current location..";
   vm.eventsList = [];
-  vm.latlng = "";
+
+	// Map variables
+	vm.latlng = '';
+	vm.zoom = '1';
+
   vm.selectedCategory = "";
 
   vm.getEventsForCategory = getEventsForCategory;
@@ -33,7 +37,10 @@ function HomeController($sce, EventService, LocationService) {
   function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+
+		// Recenter map
     vm.latlng = `${latitude}, ${longitude}`;
+		vm.zoom = 11;
 
 		// Enabling category selector here now that we have an accurate postion
 		vm.categoryDisabled = false;
