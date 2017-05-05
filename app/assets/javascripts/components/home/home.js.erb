@@ -60,6 +60,11 @@ function HomeController($sce, EventService, LocationService) {
       .then(function setCurrentLocation(response) {
         vm.currentLocation = response.data.results[4].formatted_address;
       })
+
+		EventService
+			.getAllEventsForLocation(vm.latLng)
+			.then(updateEventsList);
+
   }
   function updateCategories(categories) {
 
