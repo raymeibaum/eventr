@@ -24,6 +24,6 @@ class Api::EventsController < ApplicationController
 		@event = Event.load_event(params[:id])
 
 		@event ? (render json: @event) :
-		(render json: {status: 404, message: "User not found."})
+		(render json: {status: 404, message: "Event not found."})
 	end
 end

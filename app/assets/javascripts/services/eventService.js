@@ -8,7 +8,6 @@ function EventService($http) {
   const self = this;
 
   self.getCategories = getCategories;
-  self.getEvents = getEvents;
   self.getEventsForCategory = getEventsForCategory;
 	self.getAllEventsForLocation = getAllEventsForLocation;
 

@@ -21,7 +21,7 @@ function EventShowController($http, $stateParams, EventService) {
 
 	function loadEvent() {
     console.log("before call. id: " + $stateParams.id);
-    $http.get('/api/events/get?id=' + $stateParams.id).then(function(resp) {
+    $http.get('/api/events/' + $stateParams.id).then(function(resp) {
       console.log("after $http get")
       console.log($stateParams.id, resp.data);
       vm.event = resp.data;

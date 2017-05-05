@@ -29,4 +29,15 @@ class Event < ApplicationRecord
 		categories = HTTParty.get("http://api.eventful.com/json/categories/list?app_key=vg3wPtKcvHhssZxh")
 		parsed = JSON.parse(categories)["category"]
 	end
+
+	def self.load_event(id)
+		event = HTTParty.get("http://api.eventful.com/json/events/get?app_key=vg3wPtKcvHhssZxh&id=#{id}")
+		parsed = JSON.parse(event)
+		if parsed
+			return parsed
+		else
+			return nil
+		end
+	end
+
 end
