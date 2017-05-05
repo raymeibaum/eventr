@@ -32,11 +32,17 @@ body {
   margin: 60px 0;
 }
 
+.signup-content {
+    width: 500px;
+    padding: 50px;
+    padding-right: 5em;
+    border-right: thin solid #000;
+}
 
 .login-content {
     width: 400px;
     padding: 50px;
-    padding-left: 100px;
+    padding-left: 5em;
     border-left: thin solid #000;
 }
 
