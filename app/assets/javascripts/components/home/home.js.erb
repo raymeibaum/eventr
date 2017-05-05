@@ -14,10 +14,20 @@ function HomeController($sce, EventService, LocationService) {
 	vm.categoryDisabled = true;
   vm.currentLocation = "Getting current location..";
   vm.eventsList = [];
-  vm.latlng = "";
+
+	vm.latLng = '';
+
+	// Map variables
+	vm.mapLatLng
+	vm.mapZoom = 1;
+
+	vm.defaultLatLng;
+	vm.defaultZoom;
+
   vm.selectedCategory = "";
 
   vm.getEventsForCategory = getEventsForCategory;
+	vm.moveMapToEvent = moveMapToEvent;
 
   activate();
 
@@ -33,18 +43,26 @@ function HomeController($sce, EventService, LocationService) {
   function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    vm.latlng = `${latitude}, ${longitude}`;
+    vm.latLng = `${latitude}, ${longitude}`;
+
+		// Recenter map
+		vm.defaultLatLng = vm.latLng;
+		vm.defaultZoom = 11;
+
+		vm.mapLatLng = vm.defaultLatLng;
+		vm.mapZoom = vm.defaultZoom;
 
 		// Enabling category selector here now that we have an accurate postion
 		vm.categoryDisabled = false;
 
     LocationService
-      .reverseGeocodeLocation(vm.latlng)
+      .reverseGeocodeLocation(vm.latLng)
       .then(function setCurrentLocation(response) {
         vm.currentLocation = response.data.results[4].formatted_address;
       })
   }
   function updateCategories(categories) {
+
     vm.categories = [];
     categories.data.forEach(function(category) {
       vm.categories.push(category);
@@ -52,17 +70,25 @@ function HomeController($sce, EventService, LocationService) {
   }
   function getEventsForCategory() {
     EventService
-      .getEventsForCategory(vm.latlng, vm.selectedCategory)
+      .getEventsForCategory(vm.latLng, vm.selectedCategory)
       .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {
-		console.log(events);
     vm.eventsList = [];
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
-    })
+    });
+		// Reset map to default
+		vm.mapLatLng = vm.defaultLatLng;
+		vm.mapZoom = vm.defaultZoom;
+
   }
 	function displayErrorMessage(error) {
 		console.log(error);
 	}
+	function moveMapToEvent(event) {
+		vm.mapLatLng = `${event.latitude}, ${event.longitude}`
+		vm.mapZoom = 15;
+	}
+
 }

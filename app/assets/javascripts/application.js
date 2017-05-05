@@ -14,12 +14,13 @@
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-ui-router/release/angular-ui-router
+//= require ngmap
 //= require bootstrap-sprockets
 //= require_self
 //= require_tree .
 
 angular
-  .module('eventPlanner', ['ui.router'])
+  .module('eventPlanner', ['ui.router', 'ngMap'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('home', {
