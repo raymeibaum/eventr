@@ -47,7 +47,7 @@ function HomeController($sce, EventService, LocationService) {
 
 		// Recenter map
 		vm.defaultLatLng = vm.latLng;
-		vm.defaultZoom = 12;
+		// vm.defaultZoom = 12;
 
 		vm.mapLatLng = vm.defaultLatLng;
 		vm.mapZoom = vm.defaultZoom;
@@ -84,7 +84,7 @@ function HomeController($sce, EventService, LocationService) {
     });
 		// Reset map to default
 		vm.mapLatLng = vm.defaultLatLng;
-		vm.mapZoom = vm.defaultZoom;
+		// vm.mapZoom = vm.defaultZoom;
 
   }
 	function displayErrorMessage(error) {
@@ -92,7 +92,7 @@ function HomeController($sce, EventService, LocationService) {
 	}
 	function moveMapToEvent(event) {
 		vm.mapLatLng = `${event.latitude}, ${event.longitude}`
-		vm.mapZoom = 15;
+		// vm.mapZoom = 15;
 	}
 
 }
