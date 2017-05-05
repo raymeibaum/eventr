@@ -22,6 +22,6 @@
   "homepage": "https://github.com/raymeibaum/event-planner#readme",
   "dependencies": {
     "angular": "^1.6.4",
-    "angular-ui-router": "^1.0.0-rc.1"
+    "@uirouter/angularjs": "^1.0.0-rc.1"
   }
 }
