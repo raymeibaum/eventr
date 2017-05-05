@@ -21,6 +21,9 @@ function HomeController($sce, EventService, LocationService) {
 	vm.mapLatLng
 	vm.mapZoom = 1;
 
+	vm.defaultLatLng;
+	vm.defaultZoom;
+
   vm.selectedCategory = "";
 
   vm.getEventsForCategory = getEventsForCategory;
@@ -43,8 +46,11 @@ function HomeController($sce, EventService, LocationService) {
     vm.latLng = `${latitude}, ${longitude}`;
 
 		// Recenter map
-		vm.mapLatLng = vm.latLng
-		vm.mapZoom = 11;
+		vm.defaultLatLng = vm.latLng;
+		vm.defaultZoom = 11;
+
+		vm.mapLatLng = vm.defaultLatLng;
+		vm.mapZoom = vm.defaultZoom;
 
 		// Enabling category selector here now that we have an accurate postion
 		vm.categoryDisabled = false;
@@ -56,6 +62,7 @@ function HomeController($sce, EventService, LocationService) {
       })
   }
   function updateCategories(categories) {
+
     vm.categories = [];
     categories.data.forEach(function(category) {
       vm.categories.push(category);
@@ -67,17 +74,19 @@ function HomeController($sce, EventService, LocationService) {
       .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {
-		console.log(events);
     vm.eventsList = [];
     events.data.forEach(function(event) {
       vm.eventsList.push(event);
-    })
+    });
+
+		// Reset map to default
+		vm.mapLatLng = vm.defaultLatLng;
+		vm.mapZoom = vm.defaultZoom;
   }
 	function displayErrorMessage(error) {
 		console.log(error);
 	}
 	function moveMapToEvent(event) {
-		console.log(event);
 		vm.mapLatLng = `${event.latitude}, ${event.longitude}`
 		vm.mapZoom = 15;
 	}
