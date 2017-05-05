@@ -1,11 +1,18 @@
-<h1>Show Event Page</h1>
+<h1>{{$ctrl.event.title}}</h1>
 <br>
 <div class="row">
   <div class="col col-md-6">
-    <h2>Event:</h2>
+    <h4>{{$ctrl.event.venue_name}}</h4>
+    <h5>{{$ctrl.event.address}}</h5>
+    <h5>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h5>
+    <hr>
+    <h6><b>Category:</b> {{$ctrl.event.categories.category[0].id}}</h6>
   </div>
   <div class="col col-md-6">
-    <h2>Details:</h2>
+    <h2>Description:</h2>
+    <p>{{$ctrl.event.description}}</p> <br>
+
+    <a href="{{$ctrl.event.url}}" target="_blank"><button type="button" class="btn btn-default">See More</button></a>
 
     <hr>
 
