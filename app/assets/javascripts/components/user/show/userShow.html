@@ -1,22 +1,17 @@
 <div class="userShow">
 	<h1>Welcome to your account {{$ctrl.user.f_name}}!</h1>
 </div>
-<br>
-
+<hr>
 <div class="row">
-
 	<div class="user-profile col col-md-6">
 		<h4>Your Account Information</h4>
-
-			<ul>
-				<img src="{{$ctrl.user.photo_url}}" alt="User Image" width=320px>
+		<br>
+		<img src="{{$ctrl.user.photo_url}}" alt="User Image" width=320px>
 				<br>
 				<br>
 				<li><b>First Name:</b> {{$ctrl.user.f_name}}</li>
 				<li><b>Last Name:</b> {{$ctrl.user.l_name}}</li>
 				<li><b>Email:</b> {{$ctrl.user.email}} </li>
-			</ul>
-
 	</div>
 
 	<div class="user-events col col-md-6">
@@ -27,6 +22,6 @@
 </div>
 <hr>
 
-<form action="/users/edit">
+<form id="edit-btn" action="/users/edit">
 	<input type="submit" class="btn btn-default" value="Edit Account">
 </form>

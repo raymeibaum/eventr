@@ -15,13 +15,13 @@
  *= require_tree ../javascripts/components/
 */
 
-@import "bootswatch/simplex/variables";
+@import "bootswatch/yeti/variables";
 @import "bootstrap";
-@import "bootswatch/simplex/bootswatch";
+@import "bootswatch/yeti/bootswatch";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-/* Sticky footer styles
+/* General Style
 -------------------------------------------------- */
 html {
   position: relative;
@@ -31,6 +31,12 @@ body {
   /* Margin bottom by footer height */
   margin: 60px 0;
 }
+
+nav .container {
+  margin: 0px !important;
+  width: 100%;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -41,4 +47,90 @@ body {
 }
 .text-muted {
   margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-size: 11.5px;
+}
+
+.text-muted a {
+  color: black;
+}
+
+.text-muted a:hover {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ddd !important;
+  text-decoration: none;
+}
+
+h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+p, li {
+  font-size: 13px;
+  line-height: 1.7em;
+}
+
+.btn {
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 10px 20px;
+}
+
+.btn-default:hover {
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+/* Navbar Style
+-------------------------------------------------- */
+
+.navbar.navbar-default.navbar-fixed-top  {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: transparent;
+}
+
+.navbar a {
+  color: #555 !important;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: normal;
+  border-left: 1px solid #eee;
+}
+
+a.navbar-brand {
+  text-transform: none;
+  border: 0px;
+}
+
+.navbar a:hover {
+  color: #ddd !important;
+}
+
+.navbar-right {
+  text-align: right;
+}
+
+/* Edit Form Style
+-------------------------------------------------- */
+
+.edit-form {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.edit-form h2, .cancel-account {
+  text-align: center;
 }
