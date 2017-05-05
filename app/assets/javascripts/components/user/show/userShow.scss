@@ -1,4 +1,12 @@
 
-  form {
+  body {
+    padding: 30px 0px;
+  }
+
+  .user-profile, #edit-btn {
     text-align: center;
+  }
+
+  .user-profile li {
+    list-style-type: none;
   }

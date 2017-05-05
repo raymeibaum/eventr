@@ -29,6 +29,10 @@ angular
 			.state('userShow', {
 				url: '/users/:id',
 				component: 'userShow'
+			})
+      .state('eventShow', {
+				url: '/events/:id',
+				component: 'eventShow'
 			});
 
     // default fall back route
