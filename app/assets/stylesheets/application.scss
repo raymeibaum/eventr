@@ -31,6 +31,28 @@ body {
   /* Margin bottom by footer height */
   margin: 60px 0;
 }
+
+.login-content {
+    width: 400px;
+    padding: 50px;
+    padding-left: 100px;
+    border-left: thin solid #000;
+}
+
+.login-logo {
+    width: 200px;
+    align-items: center;
+    margin: 30px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.actions {
+    text-align: left;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -42,14 +64,4 @@ body {
 
 .text-muted {
   margin: 20px 0;
-}
-
-.login-content {
-    width: 300px;
-    margin: 0 auto;
-    padding: 30px;
-}
-
-.login-logo {
-    width: 200px;
 }
