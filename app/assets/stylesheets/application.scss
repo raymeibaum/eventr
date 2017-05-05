@@ -31,6 +31,12 @@ body {
   /* Margin bottom by footer height */
   margin: 60px 0;
 }
+
+nav .container {
+  margin: 0px !important;
+  width: 100%;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -66,7 +72,6 @@ p, li {
   padding: 10px 20px;
 }
 
-
 .btn-default:hover {
   background-color: transparent;
   border: 1px solid black;
@@ -89,8 +94,18 @@ p, li {
   text-transform: uppercase;
   letter-spacing: .1em;
   font-weight: normal;
+  border-left: 1px solid #eee;
 }
 
 a.navbar-brand {
   text-transform: none;
+  border: 0px;
+}
+
+.navbar a:hover {
+  color: #ddd !important;
+}
+
+.navbar-right {
+  text-align: right;
 }
