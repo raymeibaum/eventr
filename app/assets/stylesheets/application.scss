@@ -15,13 +15,13 @@
  *= require_tree ../javascripts/components/
 */
 
-@import "bootswatch/simplex/variables";
+@import "bootswatch/yeti/variables";
 @import "bootstrap";
-@import "bootswatch/simplex/bootswatch";
+@import "bootswatch/yeti/bootswatch";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-/* Sticky footer styles
+/* General Style
 -------------------------------------------------- */
 html {
   position: relative;
@@ -41,4 +41,56 @@ body {
 }
 .text-muted {
   margin: 20px 0;
+}
+
+a:hover {
+  color: #ddd !important;
+}
+
+h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+p, li {
+  font-size: 13px;
+  line-height: 1.7em;
+}
+
+.btn {
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 10px 20px;
+}
+
+
+.btn-default:hover {
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+/* Navbar Style
+-------------------------------------------------- */
+
+.navbar.navbar-default.navbar-fixed-top  {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: transparent;
+}
+
+.navbar a {
+  color: #555 !important;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: normal;
+}
+
+a.navbar-brand {
+  text-transform: none;
 }
