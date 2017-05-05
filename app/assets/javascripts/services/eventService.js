@@ -9,15 +9,16 @@ function EventService($http) {
 
   self.getCategories = getCategories;
   self.getEvents = getEvents;
-  // self.loadEvent = loadEvent;
+  self.getEventsForCategory = getEventsForCategory;
+	self.getAllEventsForLocation = getAllEventsForLocation;
 
   function getCategories() {
-    return $http.get('/api/events/categories');
+    return $http.get('/api/events/category');
   }
-  function getEvents(latlng, category) {
+  function getEventsForCategory(latlng, category) {
     return $http.get(`/api/events?latlng=${latlng}&category=${category}`);
   }
-  // function loadEvent(id) {
-  //   return $http.get(`/api/events/get?id=${id}`);
-  // }
+	function getAllEventsForLocation(latlng) {
+		return $http.get(`/api/events?latlng=${latlng}`);
+	}
 }
