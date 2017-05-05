@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 	def events_for_category
 		@events = Event.get_events_for_category(params[:latlng], params[:id])
-		binding.pry
+
 		@events ? (render json: @events) :
 		(render json: {status: 404, message: "No events found."})
 	end
