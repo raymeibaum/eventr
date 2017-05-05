@@ -1,5 +1,5 @@
 <div class="userShow">
-	<h1>Welcome to your account {{$ctrl.message}}!</h1>
+	<h1>Welcome to your account {{$ctrl.user.f_name}}!</h1>
 </div>
 <br>
 
@@ -9,9 +9,11 @@
 		<h4>Your Account Information</h4>
 
 			<ul>
-				<!-- THESE ARE NOT CREATED IN TABLE - TO BE CREATED -->
-				<li><b>First Name:</b></li>
-				<li><b>Last Name:</b></li>
+				<img src="{{$ctrl.user.photo_url}}" alt="User Image" width=320px>
+				<br>
+				<br>
+				<li><b>First Name:</b> {{$ctrl.user.f_name}}</li>
+				<li><b>Last Name:</b> {{$ctrl.user.l_name}}</li>
 				<li><b>Email:</b> {{$ctrl.user.email}} </li>
 			</ul>
 
