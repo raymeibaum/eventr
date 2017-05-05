@@ -3,18 +3,27 @@
 <div class="row">
   <div class="col col-md-6">
     <h4>{{$ctrl.event.venue_name}}</h4>
-    <h5>{{$ctrl.event.address}}</h5>
     <h5>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h5>
+    <br>
+    <img src="{{$ctrl.event.images.image.medium.url}}" alt="Event Image" width="250px">
+
     <hr>
-    <h6><b>Category:</b> {{$ctrl.event.categories.category[0].id}}</h6>
+    <h6><b>Category:</b> <a href="/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6>
   </div>
   <div class="col col-md-6">
-    <h2>Description:</h2>
+    <h2>Event Details:</h2>
     <p>{{$ctrl.event.description}}</p> <br>
 
-    <a href="{{$ctrl.event.url}}" target="_blank"><button type="button" class="btn btn-default">See More</button></a>
+    <h5>When:</h5>
+    <p>{{$ctrl.event.start_time | date : "fullDate"}}</p> <br>
 
-    <hr>
+    <h5>Location:</h5>
+    <p>{{$ctrl.event.venue_name}}</p>
+    <p>{{$ctrl.event.address}}</p>
+    <p>{{$ctrl.event.city}}, {{$ctrl.event.region}}</p> <br>
+
+    <a href="{{$ctrl.event.links.link[0].url}}" target="_blank"><button type="button" class="btn btn-primary">Purchase Ticket</button></a>
+    <a href="{{$ctrl.event.url}}" target="_blank"><button type="button" class="btn btn-default">See More</button></a>
 
     <h2>Comments:</h2>
 
