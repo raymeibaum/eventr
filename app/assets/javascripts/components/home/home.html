@@ -6,7 +6,7 @@
 			</div>
 			<div class="google-map">
 				<div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
-				  <ng-map center="{{$ctrl.latlng}}" zoom="{{$ctrl.zoom}}">
+				  <ng-map center="{{$ctrl.mapLatLng}}" zoom="{{$ctrl.mapZoom}}">
 						<marker
 							ng-repeat="event in $ctrl.eventsList"
 							position="[{{event.latitude}}, {{event.longitude}}]"
@@ -35,7 +35,7 @@
 				<div class="events-list">
 					<ul class="list-unstyled">
 						<li ng-repeat="event in $ctrl.eventsList">
-							<a href="/events/{{event.id}}">{{event.title}}</a>
+							<a href="/events/{{event.id}}" ng-mouseover="$ctrl.moveMapToEvent(event)">{{event.title}}</a>
 							<hr>
 						</li>
 					</ul>

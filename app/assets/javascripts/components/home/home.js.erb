@@ -15,13 +15,16 @@ function HomeController($sce, EventService, LocationService) {
   vm.currentLocation = "Getting current location..";
   vm.eventsList = [];
 
+	vm.latLng = '';
+
 	// Map variables
-	vm.latlng = '';
-	vm.zoom = '1';
+	vm.mapLatLng
+	vm.mapZoom = 1;
 
   vm.selectedCategory = "";
 
   vm.getEventsForCategory = getEventsForCategory;
+	vm.moveMapToEvent = moveMapToEvent;
 
   activate();
 
@@ -37,16 +40,17 @@ function HomeController($sce, EventService, LocationService) {
   function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+    vm.latLng = `${latitude}, ${longitude}`;
 
 		// Recenter map
-    vm.latlng = `${latitude}, ${longitude}`;
-		vm.zoom = 11;
+		vm.mapLatLng = vm.latLng
+		vm.mapZoom = 11;
 
 		// Enabling category selector here now that we have an accurate postion
 		vm.categoryDisabled = false;
 
     LocationService
-      .reverseGeocodeLocation(vm.latlng)
+      .reverseGeocodeLocation(vm.latLng)
       .then(function setCurrentLocation(response) {
         vm.currentLocation = response.data.results[4].formatted_address;
       })
@@ -59,7 +63,7 @@ function HomeController($sce, EventService, LocationService) {
   }
   function getEventsForCategory() {
     EventService
-      .getEventsForCategory(vm.latlng, vm.selectedCategory)
+      .getEventsForCategory(vm.latLng, vm.selectedCategory)
       .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {
@@ -72,4 +76,10 @@ function HomeController($sce, EventService, LocationService) {
 	function displayErrorMessage(error) {
 		console.log(error);
 	}
+	function moveMapToEvent(event) {
+		console.log(event);
+		vm.mapLatLng = `${event.latitude}, ${event.longitude}`
+		vm.mapZoom = 15;
+	}
+
 }
