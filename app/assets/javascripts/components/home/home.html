@@ -4,21 +4,23 @@
 			<div class="page-header">
 				<h1 ng-bind="$ctrl.currentLocation"></h1>
 			</div>
-			<h3>Google Map</h3>
+			<img src="http://www.harvard.edu/sites/default/files/content/harvard-map-google.jpg" alt="" class="img-responsive img-rounded">
+			<h1>😝</h1>
 		</div>
 		<div class="col-sm-4">
 			<div class="page-header">
 				<h1>Events</h1>
 			</div>
-			<select
+			<div class="categories">
+				<select
 				class="form-control"
 				ng-model="$ctrl.selectedCategory"
 				ng-change="$ctrl.getEventsForCategory()"
 				ng-disabled="$ctrl.categoryDisabled">
 				<option value="">Select category</option>
-			  <option value="all">all</option>
+				<option value="all">all</option>
 				<!-- TODO: Sanitize category.name to display & correctly-->
-			  <option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
+				<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
 			</select>
 			<hr>
 			<ul class="list-unstyled">
@@ -27,6 +29,7 @@
 					<hr>
 				</li>
 			</ul>
+			</div>
 		</div>
 	</div>
 </div>
