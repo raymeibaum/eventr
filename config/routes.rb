@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 		resources :comments
 		resources :favorites
 
-		get 'events/category/:id', to: 'events#events_for_category'
-		get 'events/category', to: 'events#categories'
+		get 'events/categories/:id', to: 'events#events_for_category'
+		get 'events/categories', to: 'events#categories'
     get 'events/:id', to: 'events#show'
     get 'events', to: 'events#events_all'
   end
