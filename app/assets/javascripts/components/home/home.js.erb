@@ -47,7 +47,7 @@ function HomeController($sce, EventService, LocationService) {
 
 		// Recenter map
 		vm.defaultLatLng = vm.latLng;
-		vm.defaultZoom = 11;
+		vm.defaultZoom = 12;
 
 		vm.mapLatLng = vm.defaultLatLng;
 		vm.mapZoom = vm.defaultZoom;
@@ -60,9 +60,13 @@ function HomeController($sce, EventService, LocationService) {
       .then(function setCurrentLocation(response) {
         vm.currentLocation = response.data.results[4].formatted_address;
       })
+
+		EventService
+			.getAllEventsForLocation(vm.latLng)
+			.then(updateEventsList);
+
   }
   function updateCategories(categories) {
-
     vm.categories = [];
     categories.data.forEach(function(category) {
       vm.categories.push(category);
