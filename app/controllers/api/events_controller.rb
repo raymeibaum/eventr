@@ -11,7 +11,8 @@ class Api::EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.show_event(params[:id])
+		# figure out how to load this function
+		@event = Event.load_event(params[:id])
 
 		@event ? (render json: @event) :
 		(render json: {status: 404, message: "User not found."})

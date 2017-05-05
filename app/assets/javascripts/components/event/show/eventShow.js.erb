@@ -11,13 +11,20 @@ function EventShowController($http, $stateParams, EventService) {
   var vm = this;
 
   vm.event = [];
-  vm.id = "";
   vm.message = "Testing User";
 
-	activate();
+	activate()
 
 	function activate() {
-    EventService
-      .showEvent()
+		loadEvent()
+	}
+
+	function loadEvent() {
+    console.log("before call. id: " + $stateParams.id);
+    $http.get('/api/events/get?id=' + $stateParams.id).then(function(resp) {
+      console.log("after $http get")
+      console.log($stateParams.id, resp.data);
+      vm.event = resp.data;
+    })
 	}
 }

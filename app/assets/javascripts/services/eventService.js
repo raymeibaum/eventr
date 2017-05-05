@@ -9,7 +9,7 @@ function EventService($http) {
 
   self.getCategories = getCategories;
   self.getEvents = getEvents;
-  self.showEvent = showEvent;
+  // self.loadEvent = loadEvent;
 
   function getCategories() {
     return $http.get('/api/events/categories');
@@ -17,7 +17,7 @@ function EventService($http) {
   function getEvents(latlng, category) {
     return $http.get(`/api/events?latlng=${latlng}&category=${category}`);
   }
-  function showEvent(id) {
-    return $http.get(`/api/events/get?id=${id}`);
-  }
+  // function loadEvent(id) {
+  //   return $http.get(`/api/events/get?id=${id}`);
+  // }
 }
