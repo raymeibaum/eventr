@@ -35,7 +35,13 @@
     <a href="{{$ctrl.event.links.link[0].url}}" target="_blank"><button type="button" class="btn btn-primary">Purchase Ticket</button></a>
     <a href="{{$ctrl.event.url}}" target="_blank"><button type="button" class="btn btn-default">See More</button></a>
 
-    <h2>Comments:</h2>
+    <div class="event-comments">
+      <h2>Comments:</h2>
+      <h4 ng-repeat="event in $ctrl.event">
+        <li>{{event.comments.title}}</li>
+      </h4>
+    </div>
+
 
   </div>
 </div>
