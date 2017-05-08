@@ -13,6 +13,12 @@ class Api::EventsController < ApplicationController
 		(render json: {status: 404, message: "No events found."})
 	end
 
+	def create
+		event = Event.find_or_create_by(event_id: params[:id])
+		event.save_as_favorite_for(current_user)
+		binding.pry
+	end
+
 	def categories
 		@categories = Event.get_categories
 
@@ -20,10 +26,7 @@ class Api::EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.load_event(params[:id])
-		# @comments = @event.comments
-
-		# render json: {event: @event, comments: @comments }, status: :ok
+		@event = Event.get_event(params[:id])
 
 		@event ? (render json: @event) :(render json: {status: 404, message: "Event not found."})
 
