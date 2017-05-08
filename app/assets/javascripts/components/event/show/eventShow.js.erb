@@ -5,9 +5,9 @@ angular
     controller: EventShowController
   });
 
-  EventShowController.$inject = ['$stateParams', 'EventService'];
+  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService'];
 
-function EventShowController($stateParams, EventService) {
+function EventShowController($state, $stateParams, EventService, FavoritesService) {
   var vm = this;
 
   vm.event = {};
@@ -20,10 +20,10 @@ function EventShowController($stateParams, EventService) {
 		getEvent()
 	}
 	function favoriteEvent() {
-		EventService
-			.persistEvent($stateParams.id)
+		FavoritesService
+			.favoriteEvent($stateParams.id)
 			.then(function(response) {
-				console.log(response);
+				$state.go('home');
 			})
 	}
 	function getEvent() {

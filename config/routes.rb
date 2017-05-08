@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 		get 'events/categories/:id', to: 'events#events_for_category'
 		get 'events/categories', to: 'events#categories'
     get 'events/:id', to: 'events#show'
-		post 'events', to: 'events#create'
+		post 'favorites/:event_id', to: 'favorites#create'
     get 'events', to: 'events#events_all'
   end
 

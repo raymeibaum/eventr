@@ -11,7 +11,6 @@ function EventService($http) {
   self.getEventsForCategory = getEventsForCategory;
 	self.getAllEventsForLocation = getAllEventsForLocation;
 	self.getEvent = getEvent;
-	self.persistEvent = persistEvent;
 
   function getCategories() {
     return $http.get('/api/events/categories');
@@ -24,8 +23,5 @@ function EventService($http) {
 	}
 	function getEvent(id) {
 		return $http.get(`/api/events/${id}`);
-	}
-	function persistEvent(id) {
-		return $http.post(`/api/events?id=${id}`);
 	}
 }
