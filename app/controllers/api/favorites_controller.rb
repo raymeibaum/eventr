@@ -6,8 +6,11 @@ class Api::FavoritesController < ApplicationController
 
 		render json: {status: 201, message: "Event favorited."}
 	end
+
 	def destroy
 		favorite = Favorite.find(params[:event_id])
     favorite.destroy
+
+		render json: {status: 200, message: "Event unfavorited."}
 	end
 end
