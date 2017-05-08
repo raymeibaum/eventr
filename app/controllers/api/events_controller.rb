@@ -25,5 +25,7 @@ class Api::EventsController < ApplicationController
 
 		@event ? (render json: @event) :
 		(render json: {status: 404, message: "Event not found."})
+
+		# @comments = @event.comments
 	end
 end
