@@ -42,14 +42,15 @@
 						<tr>
 							<th>Event</th>
 							<th>Date</th>
-							<!-- <th>Time</th> -->
 				    </tr>
 					</thead>
 					<tbody>
+						<tr ng-hide="$ctrl.eventsList.length">
+							<td>No Events to show</td>
+						</tr>
 						<tr ng-repeat="event in $ctrl.eventsList | orderBy: 'start_time'" ng-mouseover="$ctrl.moveMapToEvent(event)">
 							<td><a ui-sref="eventShow({ id: event.id })">{{event.title}}</a></td>
 							<td>{{event.start_time | date: 'shortDate'}}</td>
-							<!-- <td>{{event.start_time | date: 'shortTime'}}</td> -->
 				    </tr>
 					</tbody>
 				</table>
