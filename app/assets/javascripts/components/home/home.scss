@@ -1,7 +1,10 @@
 .events-list {
-	height: 550px;
-	overflow: scroll;
+	height: 450px;
+	overflow: auto;
 }
 ng-map {
 	height: 500px;
+}
+a:hover {
+	color: inherit !important;
 }

@@ -5,18 +5,8 @@ class Event < ApplicationRecord
 	has_many :comments
 	has_many :users, through: :comments
 
-	def self.get_events_for_category(location = "Atlanta", category = "all")
-		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&category=#{category}&date=today&within=5&page_size=30")
-		parsed = JSON.parse(events)["events"]
-		if parsed
-			return parsed["event"]
-		else
-			return nil
-		end
-	end
-
-	def self.get_events_for_all(location = "Atlanta")
-		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&date=today&within=5&page_size=30")
+	def self.get_events(location, category = "all")
+		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&category=#{category}&mature=safe&date=today&within=5&page_size=30&change_multi_day_start=false")
 		parsed = JSON.parse(events)["events"]
 		if parsed
 			return parsed["event"]
@@ -39,5 +29,4 @@ class Event < ApplicationRecord
 			return nil
 		end
 	end
-
 end
