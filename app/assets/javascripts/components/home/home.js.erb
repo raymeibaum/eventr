@@ -78,8 +78,13 @@ function HomeController($sce, EventService, LocationService) {
       .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {
+		console.warn(events);
     vm.eventsList = [];
     events.data.forEach(function(event) {
+
+			// convert start time to angular friendly
+			event.start_time = new Date(event.start_time);
+			
       vm.eventsList.push(event);
     });
 		// Reset map to default

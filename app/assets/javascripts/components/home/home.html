@@ -1,6 +1,6 @@
 <div class="home">
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-7">
 			<div class="page-header">
 				<h2 ng-bind="$ctrl.currentLocation"></h2>
 			</div>
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-5">
 			<div class="page-header">
 				<h2>Events</h2>
 			</div>
@@ -34,15 +34,25 @@
 					<!-- TODO: Sanitize category.name to display & correctly-->
 					<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
 				</select>
-				<hr>
-				<div class="events-list">
-					<ul class="list-unstyled">
-						<li ng-repeat="event in $ctrl.eventsList">
-							<a href="/events/{{event.id}}" ng-mouseover="$ctrl.moveMapToEvent(event)">{{event.title}}</a>
-							<hr>
-						</li>
-					</ul>
-				</div>
+				<br>
+			</div>
+			<div class="events-list">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Event</th>
+							<th>Date</th>
+							<!-- <th>Time</th> -->
+				    </tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="event in $ctrl.eventsList | orderBy: 'start_time'" ng-mouseover="$ctrl.moveMapToEvent(event)">
+							<td><a ui-sref="eventShow({ id: event.id })">{{event.title}}</a></td>
+							<td>{{event.start_time | date: 'shortDate'}}</td>
+							<!-- <td>{{event.start_time | date: 'shortTime'}}</td> -->
+				    </tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
