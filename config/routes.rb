@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+	devise_for :users, controllers: {
+		registrations: 'users/registrations'
+	}
 
 	namespace :api do
     resources :users, only: [:show]
