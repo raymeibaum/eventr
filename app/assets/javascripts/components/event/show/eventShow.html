@@ -6,6 +6,8 @@
     <h5>{{$ctrl.event.venue_name}}</h5>
     <h6>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h6>
     <br>
+    <h6><b>Category:</b> <a href="/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6>
+    <br>
     <img src="{{$ctrl.event.images.image.medium.url}}" alt="Event Image" width="250px">
     <br>
     <br>
@@ -16,9 +18,6 @@
     <div class="addthis_inline_share_toolbox"></div>
     </div>
 
-
-    <hr>
-    <h6><b>Category:</b> <a href="/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6>
   </div>
   <div class="event-details col col-md-4">
     <h3>Event Details:</h3>
@@ -35,7 +34,14 @@
     <a href="{{$ctrl.event.links.link[0].url}}" target="_blank"><button type="button" class="btn btn-primary">Purchase Ticket</button></a>
     <a href="{{$ctrl.event.url}}" target="_blank"><button type="button" class="btn btn-default">See More</button></a>
 
-    <h2>Comments:</h2>
-
   </div>
 </div>
+<hr>
+  <div class="event-comments">
+    <h2>Comments:</h2>
+    <br>
+    <ul ng-repeat="event in $ctrl.event">
+      <h4>{{event.comments.title}}</h4>
+      <p>{{event.comments.content}}</p><br>
+    </ul>
+  </div>
