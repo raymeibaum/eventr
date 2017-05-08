@@ -20,10 +20,7 @@ class Api::EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.load_event(params[:id])
-		# @comments = @event.comments
-
-		# render json: {event: @event, comments: @comments }, status: :ok
+		@event = Event.get_event(params[:id])
 
 		@event ? (render json: @event) :(render json: {status: 404, message: "Event not found."})
 

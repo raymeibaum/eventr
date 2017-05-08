@@ -29,4 +29,23 @@ class Event < ApplicationRecord
 			return nil
 		end
 	end
+
+	def self.get_event(id)
+		event = HTTParty.get("http://api.eventful.com/json/events/get?app_key=vg3wPtKcvHhssZxh&id=#{id}")
+		parsed = JSON.parse(event)
+		if parsed
+			return parsed
+		else
+			return nil
+		end
+	end
+
+	def save_as_favorite_for(user)
+		Favorite.find_or_create_by(event_id: self.id, user_id: user.id)
+	end
+
+	def save_as_comment_for(user)
+		Comment.find_or_create_by(event_id: self.id, user_id: user.id)
+	end
+
 end
