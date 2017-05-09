@@ -8,16 +8,16 @@ Rails.application.routes.draw do
 		resources :comments
 		resources :favorites
 
-    resources :events, only: [:show] do
-      resources :comments
-    end
+    # resources :events, only: [:show] do
+    #   resources :comments
+    # end
 
-		get 'events/categories/:id', to: 'events#events_for_category'
+		get 'events', to: 'events#events_all'
 		get 'events/categories', to: 'events#categories'
-    get 'events/:id', to: 'events#show'
+		get 'events/:id', to: 'events#show'
+		get 'events/categories/:id', to: 'events#events_for_category'
 		post 'favorites/:event_id', to: 'favorites#create'
 		delete 'favorites/:event_id', to: 'favorites#destroy'
-    get 'events', to: 'events#events_all'
   end
 
 	root to: 'client#index'
