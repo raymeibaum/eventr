@@ -1,12 +1,12 @@
 class Api::CommentsController < ApplicationController
 
 	def create
-		binding.pry
 		comment = Comment.create(title: params[:title], content: params[:content])
-		event = Event.find_or_create_by(event_id: params[:event_id])
-		comment_action = Action.create(user_id: current_user.id, event_id: event.id, activity_id: comment.id, activity_type: "Comment")
+		@event = Event.find_or_create_by(event_id: params[:event_id])
+		comment_action = Action.create(user_id: current_user.id, event_id: @event.id, activity_id: comment.id, activity_type: "Comment")
 
-		render json: {status: 201, message: "Comment created."}
+		render json: {comments: @event.comments}
+
 	end
 
 	def destroy
