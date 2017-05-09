@@ -38,5 +38,14 @@
 				<h4>{{comment.title}}</h4>
 				<p>{{comment.content}}</p><br>
 			</div>
+			<hr>
+			<form ng-submit="$ctrl.commentSubmit()">
+				<label for="">Title:</label>
+				<input ng-model="$ctrl.newComment.title" type="text" name="title" value="">
+				<label for="">Content:</label>
+				<input ng-model="$ctrl.newComment.content" type="text" name="content" value="">
+				<button type="Submit" name="button">Submit</button>
+			</form>
+
 		</div>
 	</div>
