@@ -11,6 +11,7 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
   var vm = this;
 
   vm.event = {};
+  vm.comments = {};
 	vm.isFavorite = false;
 
 	vm.getEvent = getEvent;
@@ -33,13 +34,14 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 			.getEvent($stateParams.id)
 			.then(function assignEvent(response) {
 				console.log(response.data);
-				vm.event = response.data.event
-				UserService
-					.getUser(response.data.user.id)
-					.then(function setFavorite(response) {
-						console.log(response.data.eventUsers);
-						vm.isFavorite = response.data.eventUsers[0].is_favorite;
-					})
+				vm.event = response.data.eventful;
+        vm.comments = response.data.actions;
+				// UserService
+				// 	.getUser(response.data.user.id)
+				// 	.then(function setFavorite(response) {
+				// 		console.log(response.data.eventUsers);
+				// 		vm.isFavorite = response.data.eventUsers[0].is_favorite;
+				// 	})
 			})
 	}
 }

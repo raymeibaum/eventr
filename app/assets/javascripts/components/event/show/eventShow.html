@@ -1,51 +1,42 @@
 <div class="eventShow">
-	<div class="row">
-		<div class="col-md-8">
-			<h2>{{$ctrl.event.title}}</h2>
-			<br>
-			<h5>{{$ctrl.event.venue_name}}</h5>
-			<h6>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h6>
-			<br>
-			<h6><b>Category:</b> <a href="/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6>
-			<br>
-			<img src="{{$ctrl.event.images.image.medium.url}}" alt="Event Image" width="250px">
-			<br>
-			<br>
-			<div class="social-media">
-				<h5>Share with friends</h5>
+		<div class="row">
+			<div class="col-md-8">
+				<h2>{{$ctrl.event.title}}</h2><br>
+				<h5>{{$ctrl.event.venue_name}}</h5>
+				<h6>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h6><br>
+				<h6><b>Category:</b> <a href=
+				"/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6><br>
 
-				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590cb1f7fb866f64"></script>
-				<div class="addthis_inline_share_toolbox"></div>
+				<img alt="Event Image" src="{{$ctrl.event.images.image.medium.url}}" width="250px"><br>
+				<br>
+				<div class="social-media">
+					<h5>Share with friends</h5>
+					<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590cb1f7fb866f64" type="text/javascript">
+					</script>
+					<div class="addthis_inline_share_toolbox"></div>
+				</div>
 			</div>
-
+			<div class="event-details col col-md-4">
+				<h3>Event Details:</h3>
+				<p>{{$ctrl.event.description}}</p><br>
+				<h5>When:</h5>
+				<p>{{$ctrl.event.start_time | date : "fullDate"}}</p><br>
+				<h5>Location:</h5>
+				<p>{{$ctrl.event.venue_name}}</p>
+				<p>{{$ctrl.event.address}}</p>
+				<p>{{$ctrl.event.city}}, {{$ctrl.event.region}}</p><br>
+				<a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Purchase Ticket</a> <a class=
+				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a> <button class="btn btn-info">Favorite
+				Event</button>
+				<h1>{{ $ctrl.isFavorite }}</h1>
+			</div>
 		</div>
-		<div class="event-details col col-md-4">
-			<h3>Event Details:</h3>
-			<p>{{$ctrl.event.description}}</p> <br>
-
-			<h5>When:</h5>
-			<p>{{$ctrl.event.start_time | date : "fullDate"}}</p> <br>
-
-			<h5>Location:</h5>
-			<p>{{$ctrl.event.venue_name}}</p>
-			<p>{{$ctrl.event.address}}</p>
-			<p>{{$ctrl.event.city}}, {{$ctrl.event.region}}</p> <br>
-
-			<a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Purchase Ticket</a>
-			<a class="btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
-			<button class="btn btn-info" ng-click="$ctrl.favoriteEvent()">Favorite Event</button>
-			<h1>{{ $ctrl.isFavorite }}</h1>
-
+		<hr>
+		<div class="event-comments">
+			<h2>Comments:</h2><br>
+			<div style="margin-left: 2em">
+				<h4>{{event.comments.title}}</h4>
+				<p>{{event.comments.content}}</p><br>
+			</div>
 		</div>
 	</div>
-	<hr>
-	<div class="event-comments">
-		<h2>Comments:</h2>
-		<br>
-		<ul ng-repeat="event in $ctrl.event">
-			<h4>{{event.comments.title}}</h4>
-			<p>{{event.comments.content}}</p><br>
-		</ul>
-	</div>
-
-</div>
