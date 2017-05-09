@@ -49,7 +49,7 @@ class Event < ApplicationRecord
 
 	def unfavorite_event(user)
 		event = EventUser.find_by(user_id: user.id, event_id: self.id)
-		event.is_favorite? = false;
+		event.is_favorite = false;
 		event.save
 	end
 
