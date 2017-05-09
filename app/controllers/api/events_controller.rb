@@ -20,14 +20,10 @@ class Api::EventsController < ApplicationController
 
 	def show
 		@event = Event.get_event(params[:id])
+		@user = current_user
 
-		@event ? (render json: @event) :(render json: {status: 404, message: "Event not found."})
+		@event ? (render json: {event: @event, user: @user}) :(render json: {status: 404, message: "Event not found."})
 
-	end
-
-	def comments
-		@event = Event.load_event(params[:id])
-		@comments = @event.comments
 	end
 
 	def favorite_or_comment

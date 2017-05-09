@@ -5,13 +5,15 @@ angular
     controller: EventShowController
   });
 
-  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService'];
+  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService','UserService'];
 
-function EventShowController($state, $stateParams, EventService, FavoritesService) {
+function EventShowController($state, $stateParams, EventService, FavoritesService, UserService) {
   var vm = this;
 
   vm.event = {};
+	vm.isFavorite = false;
 
+	vm.getEvent = getEvent;
 	vm.favoriteEvent = favoriteEvent;
 
 	activate()
@@ -23,7 +25,7 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 		FavoritesService
 			.favoriteEvent($stateParams.id)
 			.then(function(response) {
-				$state.go('home');
+				console.log(response);
 			})
 	}
 	function getEvent() {
@@ -31,7 +33,13 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 			.getEvent($stateParams.id)
 			.then(function assignEvent(response) {
 				console.log(response.data);
-				vm.event = response.data;
+				vm.event = response.data.event
+				UserService
+					.getUser(response.data.user.id)
+					.then(function setFavorite(response) {
+						console.log(response.data.eventUsers);
+						vm.isFavorite = response.data.eventUsers[0].is_favorite;
+					})
 			})
 	}
 }
