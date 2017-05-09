@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-	belongs_to :eventUser
+	has_many :actions, as: :activity
 end
