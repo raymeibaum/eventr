@@ -5,14 +5,16 @@ angular
     controller: EventShowController
   });
 
-  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService','UserService'];
+  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService','UserService', 'CommentService'];
 
-function EventShowController($state, $stateParams, EventService, FavoritesService, UserService) {
+function EventShowController($state, $stateParams, EventService, FavoritesService, UserService, CommentService) {
   var vm = this;
 
-  vm.event = {};
-  vm.comments = {};
+    vm.event = {};
+    vm.comments = {};
 	vm.isFavorite = false;
+    vm.newComment = {};
+    vm.commentSubmit = commentSubmit;
 
 	vm.getEvent = getEvent;
 	vm.favoriteEvent = favoriteEvent;
@@ -22,6 +24,16 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 	function activate() {
 		getEvent()
 	}
+
+    function commentSubmit(){
+        console.log("form has been submitted");
+        CommentService
+        .postComment(vm.newComment, $stateParams.id)
+        .then(function(response){
+            console.log(response);
+            vm.comments = response.data.comments;
+        })
+    }
 	function favoriteEvent() {
 		FavoritesService
 			.favoriteEvent($stateParams.id)
@@ -35,7 +47,7 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 			.then(function assignEvent(response) {
 				console.log(response.data);
 				vm.event = response.data.eventful;
-        vm.comments = response.data.actions;
+                vm.comments = response.data.comments;
 				// UserService
 				// 	.getUser(response.data.user.id)
 				// 	.then(function setFavorite(response) {

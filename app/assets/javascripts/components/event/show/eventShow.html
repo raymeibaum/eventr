@@ -34,9 +34,18 @@
 		<hr>
 		<div class="event-comments">
 			<h2>Comments:</h2><br>
-			<div style="margin-left: 2em">
-				<h4>{{event.comments.title}}</h4>
-				<p>{{event.comments.content}}</p><br>
+			<div ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
+				<h4>{{comment.title}}</h4>
+				<p>{{comment.content}}</p><br>
 			</div>
+			<hr>
+			<form ng-submit="$ctrl.commentSubmit()">
+				<label for="">Title:</label>
+				<input ng-model="$ctrl.newComment.title" type="text" name="title" value="">
+				<label for="">Content:</label>
+				<input ng-model="$ctrl.newComment.content" type="text" name="content" value="">
+				<button type="Submit" name="button">Submit</button>
+			</form>
+
 		</div>
 	</div>
