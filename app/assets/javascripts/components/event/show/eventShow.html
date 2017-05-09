@@ -34,9 +34,9 @@
 		<hr>
 		<div class="event-comments">
 			<h2>Comments:</h2><br>
-			<div style="margin-left: 2em">
-				<h4>{{event.comments.title}}</h4>
-				<p>{{event.comments.content}}</p><br>
+			<div ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
+				<h4>{{comment.title}}</h4>
+				<p>{{comment.content}}</p><br>
 			</div>
 		</div>
 	</div>

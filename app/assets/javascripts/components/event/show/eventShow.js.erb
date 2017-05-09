@@ -35,7 +35,7 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 			.then(function assignEvent(response) {
 				console.log(response.data);
 				vm.event = response.data.eventful;
-        vm.comments = response.data.actions;
+                vm.comments = response.data.comments;
 				// UserService
 				// 	.getUser(response.data.user.id)
 				// 	.then(function setFavorite(response) {
