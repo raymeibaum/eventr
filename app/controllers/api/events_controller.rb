@@ -19,10 +19,11 @@ class Api::EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.get_event(params[:id])
-		@user = current_user
+		@event = Event.find_by(event_id: params[:id])
+		@eventful = Event.get_event(params[:id])
+		@actions = @event.actions
 
-		@event ? (render json: {event: @event, user: @user}) :(render json: {status: 404, message: "Event not found."})
+		@event ? (render json: {event: @event, eventful: @eventful, actions: @actions}) :(render json: {status: 404, message: "Event not found."})
 
 	end
 
