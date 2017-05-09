@@ -22,6 +22,7 @@ function UserShowController($stateParams, UserService) {
 		UserService
 			.getUser($stateParams.id)
 			.then(function assignUser(response) {
+				console.log(response.data);
 				vm.user = response.data;
 			});
 	}

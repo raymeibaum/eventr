@@ -8,5 +8,5 @@ class User < ApplicationRecord
 	has_many :events, through: :favorites
 
 	has_many :comments
-	has_many :events, through: :comments
+	# has_many :events, through: :comments
 end
