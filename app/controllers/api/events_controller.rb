@@ -29,4 +29,14 @@ class Api::EventsController < ApplicationController
 		@event = Event.load_event(params[:id])
 		@comments = @event.comments
 	end
+
+	def favorite_or_comment
+		binding.pry
+		event = Event.find_or_create_by(event_id: params[:id])
+		if params[:comment]
+			event.add_comment(params[:title], param[:content], current_user)
+		else
+			event.favorite_event(current_user)
+		end
+	end
 end

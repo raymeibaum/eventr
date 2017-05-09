@@ -1,6 +1,6 @@
 class EventUser < ApplicationRecord
-	belongs_to: :event
-	belongs_to: :user
+	belongs_to :event
+	belongs_to :user
 
-	has_many: :comments
+	has_many :comments
 end

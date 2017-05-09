@@ -11,7 +11,7 @@ function FavoritesService($http) {
 	self.unfavoriteEvent = unfavoriteEvent;
 
 	function favoriteEvent(eventId) {
-		return $http.post('/api/favorites/' + eventId);
+		return $http.post('/api/events/' + eventId + '/eventUser');
 	}
 	function unfavoriteEvent(eventId) {
 		return $http.destroy('/api/favorites/' + eventId);
