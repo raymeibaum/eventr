@@ -15,7 +15,6 @@ class Api::EventsController < ApplicationController
 
 	def categories
 		@categories = Event.get_categories
-
 		render json: @categories
 	end
 
