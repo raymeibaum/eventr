@@ -1,9 +1,7 @@
 class Event < ApplicationRecord
-	has_many :favorites
-	has_many :users, through: :favorites
 
-	has_many :comments
-	has_many :users, through: :comments
+	has_many :eventUsers
+	has_many :users, through: :eventUsers
 
 	def self.get_events(location, category = "all")
 		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&category=#{category}&mature=safe&date=today&within=5&page_size=30&change_multi_day_start=false")
@@ -40,12 +38,12 @@ class Event < ApplicationRecord
 		end
 	end
 
-	def save_as_favorite_for(user)
-		Favorite.find_or_create_by(event_id: self.id, user_id: user.id)
-	end
-
-	def save_as_comment_for(user)
-		Comment.find_or_create_by(event_id: self.id, user_id: user.id)
-	end
+	# def save_as_favorite_for(user)
+	# 	Favorite.find_or_create_by(event_id: self.id, user_id: user.id)
+	# end
+	#
+	# def save_as_comment_for(user)
+	# 	Comment.find_or_create_by(event_id: self.id, user_id: user.id)
+	# end
 
 end
