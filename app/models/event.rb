@@ -38,14 +38,6 @@ class Event < ApplicationRecord
 		end
 	end
 
-	# def save_as_favorite_for(user)
-	# 	Favorite.find_or_create_by(event_id: self.id, user_id: user.id)
-	# end
-	#
-	# def save_as_comment_for(user)
-	# 	Comment.find_or_create_by(event_id: self.id, user_id: user.id)
-	# end
-
 	def add_comment(title, content, user)
 		event_user = EventUser.find_or_create_by(user_id: user.id, event_id: self.id, is_favorite?: false)
 		Comment.create(eventUser_id: event_user.id, title: title, content: content)
@@ -53,6 +45,12 @@ class Event < ApplicationRecord
 
 	def favorite_event(user)
 		EventUser.find_or_create_by(user_id: user.id, event_id: self.id, is_favorite?: true)
+	end
+
+	def unfavorite_event(user)
+		event = EventUser.find_by(user_id: user.id, event_id: self.id)
+		event.is_favorite? = false;
+		event.save
 	end
 
 end
