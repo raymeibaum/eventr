@@ -37,6 +37,22 @@ class Event < ApplicationRecord
 		end
 	end
 
+	def comments
+		comments = []
+		actions.where(activity_type: "Comment").each do |action|
+			comments << action.activity
+		end
+		comments
+	end
+
+	def favorites
+		favorites = []
+		actions.where(activity_type: "Favorite").each do |action|
+			favorites << action.activity
+		end
+		favorites
+	end
+
 
 	#
 	# def favorite_event(user)
