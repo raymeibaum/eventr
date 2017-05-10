@@ -24,11 +24,11 @@ angular
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/',
         component: 'home'
       })
       .state('splash', {
-        url: '/',
+        url: '/splash',
         component: 'splash'
       })
 			.state('userShow', {
