@@ -36,6 +36,7 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
       .then(function assignComments(response){
 				vm.comments = [];
 				response.data.comments.forEach(addToCommentsArray)
+				vm.newComment = {};
       })
   }
 	function deleteComment(id) {
