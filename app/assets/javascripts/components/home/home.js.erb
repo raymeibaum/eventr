@@ -5,9 +5,9 @@ angular
     controller: HomeController
   });
 
-HomeController.$inject = ['$sce','EventService','LocationService'];
+HomeController.$inject = ['$rootScope','EventService','LocationService', 'UserService'];
 
-function HomeController($sce, EventService, LocationService) {
+function HomeController($rootScope, EventService, LocationService, UserService) {
   var vm = this;
 
   vm.categories = [];
@@ -36,6 +36,12 @@ function HomeController($sce, EventService, LocationService) {
     LocationService
       .getUserLocation()
       .then(reverseGeocodeLocation);
+
+		UserService
+			.getLoggedInUser()
+			.then(function(response) {
+				$rootScope.currentUser = response.data.current_user;
+			})
   }
   function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
@@ -58,13 +64,11 @@ function HomeController($sce, EventService, LocationService) {
   }
   function updateCategories(categories) {
     vm.categories = [];
-		console.error(categories);
     categories.data.forEach(function(category) {
       vm.categories.push(category);
     });
   }
   function getEventsForCategory() {
-		console.warn(vm.selectedCategory);
     EventService
       .getEventsForCategory(vm.latLng, vm.selectedCategory)
       .then(updateEventsList, displayErrorMessage);

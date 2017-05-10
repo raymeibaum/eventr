@@ -5,9 +5,9 @@ angular
     controller: EventShowController
   });
 
-  EventShowController.$inject = ['$state','$stateParams', 'EventService', 'FavoritesService','UserService', 'CommentService'];
+EventShowController.$inject = ['$rootScope','$state','$stateParams', 'EventService', 'FavoritesService','UserService'];
 
-function EventShowController($state, $stateParams, EventService, FavoritesService, UserService, CommentService) {
+function EventShowController($rootScope, $state, $stateParams, EventService, FavoritesService, UserService) {
   var vm = this;
 
     vm.event = {};
@@ -23,6 +23,7 @@ function EventShowController($state, $stateParams, EventService, FavoritesServic
 
 	function activate() {
 		getEvent()
+		console.log($rootScope);
 	}
 
     function commentSubmit(){
