@@ -1,0 +1,50 @@
+.splash {
+  background-image: url("https://source.unsplash.com/6liebVeAfrY");
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.splash .content {
+  position: relative;
+  margin-left: 10%;
+  top: 20%;
+  color: white;
+  max-width: 600px;
+    -webkit-animation-duration: 7s;
+    -moz-animation-duration: 7s;
+    -ms-animation-duration: 7s;
+}
+
+.splash a {
+  border: 2px solid white;
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 500;
+  color: white;
+  letter-spacing: .2em;
+}
+
+.splash a:hover {
+  border: 2px solid transparent;
+  background-color: white;
+  color: black !important;
+}
+
+.splash span {
+  font-size: 80px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  margin: 0px;
+}
+
+.splash h5 {
+  letter-spacing: .3em;
+}
