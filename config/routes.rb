@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 		# event comments
 		get 'events/:id/comments', to: 'events#show_comments'
 		post 'events/:event_id/comments', to: 'comments#create'
-
+		delete 'events/:event_id/comments/:id', to: 'comments#destroy'
 
 		# auth
 		get 'auth/user', to: 'auth#get_user'

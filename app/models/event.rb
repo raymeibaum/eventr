@@ -40,7 +40,7 @@ class Event < ApplicationRecord
 	def comments
 		comments = []
 		actions.where(activity_type: "Comment").each do |action|
-			comments << action.activity
+			comments << {activity: action.activity, user: action.user}
 		end
 		comments
 	end

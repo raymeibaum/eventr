@@ -10,10 +10,12 @@ class Api::CommentsController < ApplicationController
 	end
 
 	def destroy
-		comment = Comment.find(params[:event_id])
-		comment.destroy
+		comment_action = Action.find_by(activity_id: params[:id])
+		comment_action.delete
+		comment = Comment.destroy(params[:id])
+		@event = Event.find_by(event_id: params[:event_id])
 
-		render json: {status: 200, message: "Comment deleted."}
+		render json: {comments: @event.comments}
 	end
 
 
