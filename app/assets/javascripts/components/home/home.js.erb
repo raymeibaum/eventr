@@ -21,9 +21,10 @@ function HomeController($rootScope, EventService, LocationService, UserService) 
 	vm.mapLatLng
 	vm.mapZoom = 1;
 
-  vm.selectedCategory = "";
+  vm.selectedCategory = "all";
+	vm.selectedDate = "today";
 
-  vm.getEventsForCategory = getEventsForCategory;
+  vm.getEventsWithSpecifics = getEventsWithSpecifics;
 	vm.moveMapToEvent = moveMapToEvent;
 
   activate();
@@ -68,9 +69,9 @@ function HomeController($rootScope, EventService, LocationService, UserService) 
       vm.categories.push(category);
     });
   }
-  function getEventsForCategory() {
+  function getEventsWithSpecifics() {
     EventService
-      .getEventsForCategory(vm.latLng, vm.selectedCategory)
+      .getEventsWithSpecifics(vm.latLng, vm.selectedCategory, vm.selectedDate)
       .then(updateEventsList, displayErrorMessage);
   }
   function updateEventsList(events) {

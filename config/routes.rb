@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 		get 'events', to: 'events#events_all'
 		get 'events/categories', to: 'events#categories'
 		get 'events/:id', to: 'events#show'
-		get 'events/categories/:id', to: 'events#events_for_category'
+		get 'events/categories/:id', to: 'events#events_with_specifics'
 
 		# event comments
 		get 'events/:id/comments', to: 'events#show_comments'

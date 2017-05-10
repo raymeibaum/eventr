@@ -2,8 +2,8 @@ class Event < ApplicationRecord
 	has_many :actions
 	has_many :users, through: :actions
 
-	def self.get_events(location, category = "all")
-		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&category=#{category}&mature=safe&date=today&within=5&page_size=30&change_multi_day_start=false")
+	def self.get_events(location, category = "all", date = "today")
+		events = HTTParty.get("http://api.eventful.com/json/events/search?app_key=vg3wPtKcvHhssZxh&location=#{location}&category=#{category}&mature=safe&date=#{date}&within=5&page_size=30&change_multi_day_start=false")
 		parsed = JSON.parse(events)["events"]
 		if parsed
 			return parsed["event"]
