@@ -53,16 +53,4 @@ class Event < ApplicationRecord
 		favorites
 	end
 
-
-	#
-	# def favorite_event(user)
-	# 	EventUser.find_or_create_by(user_id: user.id, event_id: self.id, is_favorite?: true)
-	# end
-	#
-	# def unfavorite_event(user)
-	# 	event = EventUser.find_by(user_id: user.id, event_id: self.id)
-	# 	event.is_favorite = false;
-	# 	event.save
-	# end
-
 end
