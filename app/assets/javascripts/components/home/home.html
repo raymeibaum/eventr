@@ -13,7 +13,9 @@
 						<marker
 							ng-repeat="event in $ctrl.eventsList"
 							position="[{{event.latitude}}, {{event.longitude}}]"
-							title="{{event.title}}">
+							title="{{event.title}}"
+							id="{{event.id}}"
+							on-click="$ctrl.pinClicked()">
 						</marker>
 				  </ng-map>
 				</div>

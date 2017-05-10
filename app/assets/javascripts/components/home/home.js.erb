@@ -5,9 +5,9 @@ angular
     controller: HomeController
   });
 
-HomeController.$inject = ['$rootScope','EventService','LocationService', 'UserService'];
+HomeController.$inject = ['$state','EventService','LocationService', 'UserService'];
 
-function HomeController($rootScope, EventService, LocationService, UserService) {
+function HomeController($state, EventService, LocationService, UserService) {
   var vm = this;
 
   vm.categories = [];
@@ -26,6 +26,7 @@ function HomeController($rootScope, EventService, LocationService, UserService) 
 
   vm.getEventsWithSpecifics = getEventsWithSpecifics;
 	vm.moveMapToEvent = moveMapToEvent;
+	vm.pinClicked = pinClicked;
 
   activate();
 
@@ -37,12 +38,6 @@ function HomeController($rootScope, EventService, LocationService, UserService) 
     LocationService
       .getUserLocation()
       .then(reverseGeocodeLocation);
-
-		UserService
-			.getLoggedInUser()
-			.then(function(response) {
-				$rootScope.currentUser = response.data.current_user;
-			})
   }
   function reverseGeocodeLocation(position) {
     const latitude = position.coords.latitude;
@@ -74,6 +69,9 @@ function HomeController($rootScope, EventService, LocationService, UserService) 
       .getEventsWithSpecifics(vm.latLng, vm.selectedCategory, vm.selectedDate)
       .then(updateEventsList, displayErrorMessage);
   }
+	function pinClicked(event) {
+		$state.go('eventShow', {id: this.id})
+	}
   function updateEventsList(events) {
     vm.eventsList = [];
     events.data.forEach(function(event) {
