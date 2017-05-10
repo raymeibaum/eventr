@@ -20,9 +20,11 @@
 			<h2>Recent Comments</h2>
 			<br>
 			<div ng-repeat="comment in $ctrl.user.comments">
-				<button ng-click="$ctrl.deleteComment(comment.id)"ng-show="comment.user.id === $ctrl.currentUser.id" type="button" class="close" aria-label="Close">
+
+				<button ng-click="$ctrl.deleteComment(comment.id)" ng-show="comment.user.id === $ctrl.currentUser.id" type="button" class="close" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
+
 				<h5>{{comment.title}}</h5>
 				<p>{{comment.content}}</p>
 				<p class="meta-comment"><b>Created:</b> {{comment.created_at | date : "fullDate" }}</p>

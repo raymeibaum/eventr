@@ -12,7 +12,6 @@ function UserShowController($stateParams, UserService, CommentService) {
 
   vm.user = {};
   vm.comments = [];
-  vm.event = {};
   vm.addToCommentsArray = addToCommentsArray;
   vm.deleteComment = deleteComment;
 
@@ -20,7 +19,6 @@ function UserShowController($stateParams, UserService, CommentService) {
 
 	function activate() {
 		getUser()
-        // getEvent()
 	}
 
 	function getUser() {
@@ -36,7 +34,8 @@ function UserShowController($stateParams, UserService, CommentService) {
 		CommentService
 			.deleteComment($stateParams.id, id)
 			.then(function(response) {
-				vm.comments = [];
+                // vm.comments.splice = []
+                vm.comments = [];
 				response.data.comments.forEach(addToCommentsArray)
 			});
 	}

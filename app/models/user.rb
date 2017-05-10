@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	def comments
 		comments = []
 		actions.where(activity_type: "Comment").each do |action|
-			comments << action.activity
+			comments << action.activity 
 		end
 		comments
 	end
