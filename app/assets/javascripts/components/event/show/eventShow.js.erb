@@ -17,10 +17,11 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
   vm.newComment = {};
 
 	vm.commentSubmit = commentSubmit;
+	vm.deleteComment = deleteComment;
 	vm.getEvent = getEvent;
 	vm.getLoggedInUser = getLoggedInUser;
 	vm.favoriteEvent = favoriteEvent;
-	vm.formatCommentResponse = formatCommentResponse;
+	vm.addToCommentsArray = addToCommentsArray;
 
 	activate()
 
@@ -29,13 +30,22 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 		getLoggedInUser()
 	}
 
-    function commentSubmit(){
-        CommentService
-        .postComment(vm.newComment, $stateParams.id)
-        .then(function assignComments(response){
-						response.data.comments.forEach(formatCommentResponse)
-        })
-    }
+  function commentSubmit(){
+    CommentService
+      .postComment(vm.newComment, $stateParams.id)
+      .then(function assignComments(response){
+				vm.comments = [];
+				response.data.comments.forEach(addToCommentsArray)
+      })
+  }
+	function deleteComment(id) {
+		CommentService
+			.deleteComment($stateParams.id, id)
+			.then(function(response) {
+				vm.comments = [];
+				response.data.comments.forEach(addToCommentsArray)
+			});
+	}
 	function favoriteEvent() {
 		FavoritesService
 			.favoriteEvent($stateParams.id)
@@ -48,8 +58,8 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 			.getEvent($stateParams.id)
 			.then(function assignEvent(response) {
 				vm.event = response.data.eventful;
-				response.data.comments.forEach(formatCommentResponse)
-				console.log(vm.comments)
+				vm.comments = [];
+				response.data.comments.forEach(addToCommentsArray)
 			})
 	}
 	function getLoggedInUser() {
@@ -59,7 +69,7 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 				vm.currentUser = response.data.current_user;
 			})
 	}
-	function formatCommentResponse(comment) {
+	function addToCommentsArray(comment) {
 		vm.comments.push(comment);
 	}
 }
