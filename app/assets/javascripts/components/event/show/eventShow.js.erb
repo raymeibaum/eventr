@@ -10,29 +10,30 @@ EventShowController.$inject = ['$rootScope','$state','$stateParams', 'CommentSer
 function EventShowController($rootScope, $state, $stateParams, CommentService, EventService, FavoritesService, UserService) {
   var vm = this;
 
-    vm.event = {};
-    vm.comments = {};
-		vm.isFavorite = false;
-    vm.newComment = {};
-    vm.commentSubmit = commentSubmit;
+  vm.event = {};
+  vm.comments = [];
+	vm.currentUser = {};
+	vm.isFavorite = false;
+  vm.newComment = {};
 
+	vm.commentSubmit = commentSubmit;
 	vm.getEvent = getEvent;
+	vm.getLoggedInUser = getLoggedInUser;
 	vm.favoriteEvent = favoriteEvent;
+	vm.formatCommentResponse = formatCommentResponse;
 
 	activate()
 
 	function activate() {
 		getEvent()
-		console.log($rootScope);
+		getLoggedInUser()
 	}
 
     function commentSubmit(){
-        console.log("form has been submitted");
         CommentService
         .postComment(vm.newComment, $stateParams.id)
-        .then(function(response){
-            console.log(response);
-            vm.comments = response.data.comments;
+        .then(function assignComments(response){
+						response.data.comments.forEach(formatCommentResponse)
         })
     }
 	function favoriteEvent() {
@@ -46,15 +47,22 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
     EventService
 			.getEvent($stateParams.id)
 			.then(function assignEvent(response) {
-				console.log(response.data);
 				vm.event = response.data.eventful;
-                vm.comments = response.data.comments;
-				// UserService
-				// 	.getUser(response.data.user.id)
-				// 	.then(function setFavorite(response) {
-				// 		console.log(response.data.eventUsers);
-				// 		vm.isFavorite = response.data.eventUsers[0].is_favorite;
-				// 	})
+				response.data.comments.forEach(formatCommentResponse)
 			})
+	}
+	function getLoggedInUser() {
+		UserService
+			.getLoggedInUser()
+			.then(function(response) {
+				vm.currentUser = response.data.current_user;
+			})
+	}
+	function formatCommentResponse(comment) {
+		vm.comments.push({
+			title: comment.activity.title,
+			content: comment.activity.content,
+			authorId: comment.action.user_id
+		})
 	}
 }
