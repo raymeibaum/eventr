@@ -19,7 +19,7 @@ class Api::EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.find_by(event_id: params[:id])
+		@event = Event.find_or_create_by(event_id: params[:id])
 		@eventful = Event.get_event(params[:id])
 		@comments = @event.comments
 
