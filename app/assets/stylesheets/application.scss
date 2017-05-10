@@ -28,7 +28,7 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
+  padding: 30px 0px;
   margin: 60px 0;
 }
 
@@ -114,8 +114,13 @@ p, li {
   border: 1px solid black;
 }
 
+.col-md-6, .col-md-8, .col-md-4 {
+  padding: 15px 35px !important;
+}
+
 /* Navbar Style
 -------------------------------------------------- */
+
 
 .navbar.navbar-default.navbar-fixed-top  {
   background-color: white;
