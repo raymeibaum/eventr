@@ -22,4 +22,31 @@ class User < ApplicationRecord
 		end
 		favorites
 	end
+
+	def add_favorite(event)
+		favorite = Favorite.create
+
+		action = Action.find_or_create_by(
+			user_id: self.id,
+			event_id: event.id,
+			activity_id: favorite.id,
+			activity_type: "Favorite"
+			)
+	end
+
+	def remove_favorite(event)
+		action = Action.find_by(
+			event_id: event.id,
+			user_id: self.id,
+			activity_type: "Favorite"
+			)
+
+		favorite = action.activity
+		favorite.delete
+		action.delete
+	end
+
+	def has_favorite_for(event)
+		actions.find_by(activity_type: "Favorite", event_id: event.id)
+	end
 end

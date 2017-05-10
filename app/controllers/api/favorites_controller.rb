@@ -1,16 +1,17 @@
 class Api::FavoritesController < ApplicationController
 
 	def create
+		# action = Action.find_by(user_id: current_user.id, event_id: params[:event_id], activity_type: "Favorite")
 		event = Event.find_or_create_by(event_id: params[:event_id])
-		event.save_as_favorite_for(current_user)
+		current_user.add_favorite(event) # if action.blank?
 
-		render json: {status: 201, message: "Event favorited."}
+		render json: {favorite: true}
 	end
 
 	def destroy
-		favorite = Favorite.find(params[:event_id])
-    favorite.destroy
+		event = Event.find_by(event_id: params[:event_id])
+		current_user.remove_favorite(event)
 
-		render json: {status: 200, message: "Event unfavorited."}
+		render json: {favorite: false}
 	end
 end
