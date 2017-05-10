@@ -1,0 +1,25 @@
+<div class="userShow">
+	<div class="page-header">
+		<h1>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}'s Profile</h1>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<img class="img-responsive img-rounded" src="{{$ctrl.user.photo_url}}" alt="User Image">
+			<address class="user-details">
+				<strong>Name: </strong>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}<br>
+				<strong>Email: </strong>{{$ctrl.user.email}}<br>
+				<strong>Joined: </strong>{{$ctrl.user.created_at | date: 'longDate'}}
+			</address>
+			<form id="edit-btn" action="/users/edit">
+				<input type="submit" class="btn btn-default" value="Edit Account">
+			</form>
+		</div>
+		<div class="col-md-8">
+			<h2>Saved Events</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<h2>Recent Comments</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis perferendis voluptas ab! Corrupti saepe repellendus eius facere officia voluptatum tempore, soluta iste iusto temporibus praesentium architecto aliquam eveniet neque fuga?</p>
+		</div>
+	</div>
+
+</div>
