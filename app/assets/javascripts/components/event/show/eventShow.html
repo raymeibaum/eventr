@@ -25,27 +25,36 @@
 				<p>{{$ctrl.event.venue_name}}</p>
 				<p>{{$ctrl.event.address}}</p>
 				<p>{{$ctrl.event.city}}, {{$ctrl.event.region}}</p><br>
-				<a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Purchase Ticket</a> <a class=
-				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a> <button class="btn btn-info">Favorite
-				Event</button>
-				<h1>{{ $ctrl.isFavorite }}</h1>
+				<button class="btn btn-info"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
+				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
 			</div>
 		</div>
 		<hr>
 		<div class="event-comments">
 			<h2>Comments:</h2><br>
-			<div ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
+			<div id="comment-field" ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
 				<h4>{{comment.title}}</h4>
 				<p>{{comment.content}}</p><br>
+				<hr>
+				<p class="meta-comment"><b>Created:</b> {{comment.created_at | date : "fullDate" }} | <b>Posted By:</b></p>
 			</div>
-			<hr>
-			<form ng-submit="$ctrl.commentSubmit()">
-				<label for="">Title:</label>
-				<input ng-model="$ctrl.newComment.title" type="text" name="title" value="">
-				<label for="">Content:</label>
-				<input ng-model="$ctrl.newComment.content" type="text" name="content" value="">
-				<button type="Submit" name="button">Submit</button>
-			</form>
+			<br>
+			<h3>Add a Comment</h3>
+			<div class="add-comments">
+				<form id="add-comment-form" ng-submit="$ctrl.commentSubmit()">
+					<div class="form-group">
+						<label for=""><h6>Title:</h6></label>
+						<input class="form-control" ng-model="$ctrl.newComment.title" type="text" name="title" value="">
+					</div>
+					<div class="form-group">
+						<label for=""><h6>Description:</h6></label>
+						<textarea id="content-field" class="form-control" ng-model="$ctrl.newComment.content" type="text" name="content" value=""></textarea>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default" type="Submit" name="button">Submit</button>
+					</div>
 
+				</form>
+			</div>
 		</div>
 	</div>
