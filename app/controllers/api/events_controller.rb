@@ -20,19 +20,10 @@ class Api::EventsController < ApplicationController
 
 	def show
 		@event = Event.find_or_create_by(event_id: params[:id])
+		is_favorite = current_user.has_favorite_for(@event)
 		@eventful = Event.get_event(params[:id])
 		@comments = @event.comments
 
-		@event ? (render json: {event: @event, eventful: @eventful, comments: @comments}) :(render json: {status: 404, message: "Event not found."})
-
-	end
-
-	def favorite_or_comment
-		event = Event.find_or_create_by(event_id: params[:id])
-		if params[:comment]
-			event.add_comment(params[:title], param[:content], current_user)
-		else
-			event.favorite_event(current_user)
-		end
+		render json: {event: @event, eventful: @eventful, comments: @comments, favorite: is_favorite}
 	end
 end
