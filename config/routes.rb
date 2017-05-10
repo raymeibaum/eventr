@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
 		# event comments
 		get 'events/:id/comments', to: 'events#show_comments'
-		post 'events/:id/comments', to: 'events#create_comment'
+		post 'events/:event_id/comments', to: 'comments#create'
+
 
 		# auth
 		get 'auth/user', to: 'auth#get_user'
