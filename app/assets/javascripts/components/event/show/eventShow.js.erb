@@ -49,6 +49,7 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 			.then(function assignEvent(response) {
 				vm.event = response.data.eventful;
 				response.data.comments.forEach(formatCommentResponse)
+				console.log(vm.comments)
 			})
 	}
 	function getLoggedInUser() {
@@ -59,10 +60,6 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 			})
 	}
 	function formatCommentResponse(comment) {
-		vm.comments.push({
-			title: comment.activity.title,
-			content: comment.activity.content,
-			authorId: comment.action.user_id
-		})
+		vm.comments.push(comment);
 	}
 }

@@ -33,10 +33,10 @@
 		<div class="event-comments">
 			<h2>Comments:</h2><br>
 			<div id="comment-field" ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
-				<h4>{{comment.title}}</h4>
-				<p>{{comment.content}}</p><br>
+				<h4>{{comment.activity.title}}</h4>
+				<p>{{comment.activity.content}}</p><br>
 				<hr>
-				<p class="meta-comment"><b>Created:</b> {{comment.created_at | date : "fullDate" }} | <b>Posted By:</b></p>
+				<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }} | <b>Posted By: </b><a ui-sref="userShow({id: comment.user.id})">{{comment.user.first_name}} {{comment.user.last_name}}</a></p>
 			</div>
 			<br>
 			<h3>Add a Comment</h3>
