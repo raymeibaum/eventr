@@ -120,7 +120,18 @@ p, li {
 
 /* Navbar Style
 -------------------------------------------------- */
+.navbar-header{
+  width: 100%;
+  color: #555;
+}
 
+.navbar-toggle.collapsed {
+  margin: 5px 0px;
+}
+
+.icon-bar {
+  background-color: #555 !important;
+}
 
 .navbar.navbar-default.navbar-fixed-top  {
   background-color: white;
