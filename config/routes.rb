@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 	namespace :api do
     resources :users, only: [:show]
 
+		# resources :events, only: [:show] do
+		# 	resources :comments
+		# end
+
 		# event categories
 		get 'events', to: 'events#events_all'
 		get 'events/categories', to: 'events#categories'
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
 		get 'events/:id/comments', to: 'events#show_comments'
 		post 'events/:id/comments', to: 'events#create_comment'
 
+		# auth
+		get 'auth/user', to: 'auth#get_user'
   end
 
 	root to: 'client#index'
