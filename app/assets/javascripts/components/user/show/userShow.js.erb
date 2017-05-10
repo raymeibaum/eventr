@@ -5,17 +5,21 @@ angular
     controller: UserShowController
   });
 
-UserShowController.$inject = ['$stateParams', 'UserService'];
+UserShowController.$inject = ['$stateParams', 'UserService', 'EventService'];
 
-function UserShowController($stateParams, UserService) {
+function UserShowController($stateParams, UserService, EventService) {
   var vm = this;
 
   vm.user = {};
+  vm.comments = [];
+  vm.event = {};
+  vm.addToCommentsArray = addToCommentsArray;
 
 	activate()
 
 	function activate() {
 		getUser()
+        getEvent()
 	}
 
 	function getUser() {
@@ -26,4 +30,17 @@ function UserShowController($stateParams, UserService) {
 				vm.user = response.data;
 			});
 	}
+    function getEvent() {
+        EventService
+			.getEvent($stateParams.id)
+			.then(function assignEvent(response) {
+                console.log(response.data);
+				vm.event = response.data.eventful;
+				vm.comments = [];
+				response.data.comments.forEach(addToCommentsArray)
+			})
+	}
+    function addToCommentsArray(comment) {
+        vm.comments.push(comment);
+    }
 }
