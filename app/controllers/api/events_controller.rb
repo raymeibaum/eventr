@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
-	def events_for_category
-		@events = Event.get_events(params[:latlng], params[:id])
+	def events_with_specifics
+		@events = Event.get_events(params[:latlng], params[:id], params[:date])
 
 		@events ? (render json: @events) :
 		(render json: {status: 404, message: "No events found."})

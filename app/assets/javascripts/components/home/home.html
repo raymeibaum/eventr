@@ -24,16 +24,34 @@
 				<h2>Events</h2>
 			</div>
 			<div class="categories">
-				<select
-					class="form-control"
-					ng-model="$ctrl.selectedCategory"
-					ng-change="$ctrl.getEventsForCategory()"
-					ng-disabled="$ctrl.categoryDisabled">
-					<option value="">Select category</option>
-					<option value="all">all</option>
-					<!-- TODO: Sanitize category.name to display & correctly-->
-					<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
-				</select>
+				<div class="row">
+					<div class="col-xs-7">
+						<select
+							class="form-control"
+							ng-model="$ctrl.selectedCategory"
+							ng-change="$ctrl.getEventsWithSpecifics()"
+							ng-disabled="$ctrl.categoryDisabled">
+							<option value="">Select category</option>
+							<option value="all">all</option>
+							<!-- TODO: Sanitize category.name to display & correctly-->
+							<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
+						</select>
+					</div>
+					<div class="col-xs-5">
+						<select
+							class="form-control"
+							ng-model="$ctrl.selectedDate"
+							ng-change="$ctrl.getEventsWithSpecifics()"
+							ng-disabled="$ctrl.categoryDisabled">
+							<option value="">Select date</option>
+							<option value="today">Today</option>
+							<option value="tomorrow">Tomorrow</option>
+							<option value="this week">This week</option>
+							<option value="next week">Next week</option>
+						</select>
+					</div>
+				</div>
+
 				<br>
 			</div>
 			<div class="events-list">
