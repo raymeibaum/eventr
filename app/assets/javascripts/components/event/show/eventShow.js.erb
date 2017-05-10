@@ -5,23 +5,23 @@ angular
     controller: EventShowController
   });
 
-EventShowController.$inject = ['$rootScope','$state','$stateParams', 'CommentService', 'EventService', 'FavoritesService','UserService'];
+EventShowController.$inject = ['$rootScope','$state','$stateParams', 'CommentService', 'EventService', 'FavoriteService','UserService'];
 
-function EventShowController($rootScope, $state, $stateParams, CommentService, EventService, FavoritesService, UserService) {
+function EventShowController($rootScope, $state, $stateParams, CommentService, EventService, FavoriteService, UserService) {
   var vm = this;
 
-  vm.event = {};
   vm.comments = [];
 	vm.currentUser = {};
-	vm.isFavorite = false;
+	vm.event = {};
+	vm.favorite = {}
   vm.newComment = {};
 
+	vm.addToCommentsArray = addToCommentsArray;
 	vm.commentSubmit = commentSubmit;
 	vm.deleteComment = deleteComment;
 	vm.getEvent = getEvent;
 	vm.getLoggedInUser = getLoggedInUser;
-	vm.favoriteEvent = favoriteEvent;
-	vm.addToCommentsArray = addToCommentsArray;
+	vm.toggleFavorite = toggleFavorite;
 
 	activate()
 
@@ -47,18 +47,15 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 				response.data.comments.forEach(addToCommentsArray)
 			});
 	}
-	function favoriteEvent() {
-		FavoritesService
-			.favoriteEvent($stateParams.id)
-			.then(function(response) {
-				console.log(response);
-			})
-	}
 	function getEvent() {
     EventService
 			.getEvent($stateParams.id)
 			.then(function assignEvent(response) {
+				console.log(response.data)
+
 				vm.event = response.data.eventful;
+				vm.favorite = response.data.favorite;
+
 				vm.comments = [];
 				response.data.comments.forEach(addToCommentsArray)
 			})
@@ -69,6 +66,23 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 			.then(function(response) {
 				vm.currentUser = response.data.current_user;
 			})
+	}
+	function toggleFavorite() {
+		if (vm.favorite) {
+			FavoriteService
+				.removeFavorite($stateParams.id, vm.favorite.activity_id)
+				.then(function(response) {
+					console.log(response.data)
+					vm.favorite = response.data.favorite;
+				})
+		} else {
+			FavoriteService
+				.addFavorite($stateParams.id)
+				.then(function(response) {
+					console.log(response.data)
+					vm.favorite = response.data.favorite;
+				})
+		}
 	}
 	function addToCommentsArray(comment) {
 		vm.comments.push(comment);

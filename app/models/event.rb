@@ -48,9 +48,12 @@ class Event < ApplicationRecord
 	def favorites
 		favorites = []
 		actions.where(activity_type: "Favorite").each do |action|
-			favorites << action.activity
+			favorites << {activity: action.activity, user: action.user}
 		end
 		favorites
 	end
 
+	def favorite(user)
+		actions.find_by(activity_type: "Favorite", user_id: user.id)
+	end
 end
