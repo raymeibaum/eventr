@@ -15,7 +15,6 @@
   margin-left: 10%;
   top: 20%;
   color: white;
-  max-width: 600px;
     -webkit-animation-duration: 7s;
     -moz-animation-duration: 7s;
     -ms-animation-duration: 7s;
@@ -40,11 +39,13 @@
 
 .splash span {
   font-size: 80px;
+  font-size: 7vw;
   font-weight: 600;
   letter-spacing: .1em;
   margin: 0px;
 }
 
 .splash h5 {
-  letter-spacing: .3em;
+  letter-spacing: .2em;
+  line-height: 1.5em;
 }
