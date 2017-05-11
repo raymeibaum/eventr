@@ -32,14 +32,20 @@ You should be greated by the Eventr splash page
 - Eventful Event API
 - Bootstrap responsive design
 
-## ERD
+## ERDS
+
+###Original ERD
+![Original ERD](./readme_assets/old_erd.png)
+
+###Final ERD
+![Final ERD](./readme_assets/final_erd.png)
 
 
 ## Wireframes
 ![Wireframe 1](./readme_assets/wireframe_1.png)
-![Wireframe 1](./readme_assets/wireframe_1.png)
-![Wireframe 1](./readme_assets/wireframe_1.png)
-![Wireframe 1](./readme_assets/wireframe_1.png)
+![Wireframe 1](./readme_assets/wireframe_2.png)
+![Wireframe 1](./readme_assets/wireframe_3.png)
+![Wireframe 1](./readme_assets/wireframe_4.png)
 
 ## User Stories
 [Trello Board](https://trello.com/b/RYYZ9RRd/project-4)
