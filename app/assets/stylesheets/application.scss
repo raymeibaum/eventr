@@ -242,7 +242,7 @@ a.navbar-brand {
   background-position: bottom;
   background-size: cover;
   margin: 0 auto;
-  position: absolute;
+  position: relative;
   left: 0px;
   top: 0px;
   width: 100%;
@@ -253,11 +253,11 @@ a.navbar-brand {
 .banner .content {
   position: relative;
   text-align: center;
-  top: 40%;
+  top: 35%;
   color: white;
-    -webkit-animation-duration: 7s;
-    -moz-animation-duration: 7s;
-    -ms-animation-duration: 7s;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -ms-animation-duration: 5s;
 }
 
 .banner .content h1 {
@@ -266,4 +266,27 @@ a.navbar-brand {
   font-weight: 600;
   letter-spacing: .1em;
   margin: 0px;
+}
+
+.banner .content-body {
+  position: relative;
+  color: black;
+}
+
+.cat-icons {
+  text-align: center;
+}
+
+.cat-icons .fa {
+  color: #bbb;
+}
+
+.content-body h4, .categories h4 {
+  border-bottom: 1px solid grey;
+  line-height: 3em;
+  width: 50%;
+}
+
+.categories h4, .cat-icons {
+  margin: 0% 10%;
 }
