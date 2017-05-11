@@ -116,3 +116,12 @@ address.user-details.ng-binding {
 	padding: 15px;
 	border-radius: 10px;
 }
+
+#recent-favorites li {
+	list-style-type: none;
+}
+
+#recent-favorites .fa-heart {
+	color: #d46666;
+	margin: 5px;
+}
