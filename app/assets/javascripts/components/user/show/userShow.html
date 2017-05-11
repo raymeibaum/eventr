@@ -4,15 +4,26 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<img class="img-responsive img-rounded" src="{{$ctrl.user.photo_url}}" alt="User Image">
-			<address class="user-details">
-				<strong>Name: </strong>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}<br>
-				<strong>Email: </strong>{{$ctrl.user.email}}<br>
-				<strong>Joined: </strong>{{$ctrl.user.created_at | date: 'longDate'}}
-			</address>
-			<form id="edit-btn" action="/users/edit">
-				<input type="submit" class="btn btn-default" value="Edit Account">
-			</form>
+
+			<div class="mt-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{$ctrl.user.photo_url}}">
+                    <div class="card-block">
+                        <h4 class="card-title">{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</h4>
+                        <div class="meta">
+                            <p>{{$ctrl.user.email}}</p>
+                        </div>
+                        <div class="card-text">
+													<form id="edit-btn" action="/users/edit">
+														<input type="submit" class="btn btn-default" value="Edit Account">
+													</form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">Joined {{$ctrl.user.created_at | date: 'longDate'}}</span>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div class="col-md-8">
 			<h2>Saved Events</h2>
