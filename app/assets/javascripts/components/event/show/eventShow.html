@@ -4,6 +4,9 @@
 				<div class="page-header">
 					<h1 ng-bind="$ctrl.event.title"></h1>
 				</div>
+
+				<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+
 				<img class="img-responsive" ng-src="{{$ctrl.event.images.image.large.url}}">
 				<div class="social-media">
 					<h5>Share with friends</h5>
