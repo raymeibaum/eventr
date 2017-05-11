@@ -15,21 +15,17 @@ class Event < ApplicationRecord
 	def self.get_categories()
 		categories = HTTParty.get("http://api.eventful.com/json/categories/list?app_key=vg3wPtKcvHhssZxh")
 		parsed = JSON.parse(categories)["category"]
-	end
-
-	def self.load_event(id)
-		event = HTTParty.get("http://api.eventful.com/json/events/get?app_key=vg3wPtKcvHhssZxh&id=#{id}")
-		parsed = JSON.parse(event)
-		if parsed
-			return parsed
-		else
-			return nil
+	 	parsed.each do |category|
+			category["name"] = Nokogiri::HTML(category["name"]).text
 		end
+		binding.pry
+		parsed
 	end
 
 	def self.get_event(id)
-		event = HTTParty.get("http://api.eventful.com/json/events/get?app_key=vg3wPtKcvHhssZxh&id=#{id}")
+		event = HTTParty.get("http://api.eventful.com/json/events/get?app_key=vg3wPtKcvHhssZxh&image_sizes=large&id=#{id}")
 		parsed = JSON.parse(event)
+		parsed["description"] = Nokogiri::HTML(parsed["description"]).text
 		if parsed
 			return parsed
 		else
