@@ -6,8 +6,8 @@ LocationService.$inject = ['$http'];
 
 function LocationService($http) {
   const self = this;
-
-  self.GoogleAPIKey = 'AIzaSyA_c3gj2q8QiYEoubHBgl9rtQkQml4deSI'
+	
+	self.GoogleAPIKey = 'AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM'
 
   self.getUserLocation = getUserLocation;
   self.reverseGeocodeLocation = reverseGeocodeLocation;

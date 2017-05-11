@@ -33,7 +33,8 @@
 		</div>
 		<hr>
 		<div class="event-comments">
-			<h2>Comments:</h2><br>
+			<h2>Comments</h2>
+			<em ng-hide="$ctrl.comments.length">No comments.</em>
 			<div id="comment-field" ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
 				<button ng-click="$ctrl.deleteComment(comment.activity.id)"ng-show="comment.user.id === $ctrl.currentUser.id" type="button" class="close" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
