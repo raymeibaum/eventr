@@ -34,10 +34,10 @@ You should be greated by the Eventr splash page
 
 ## ERDS
 
-###Original ERD
+### Original ERD
 ![Original ERD](./readme_assets/old_erd.png)
 
-###Final ERD
+### Final ERD
 ![Final ERD](./readme_assets/final_erd.png)
 
 
