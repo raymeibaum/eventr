@@ -27,7 +27,7 @@
 					{{$ctrl.event.city}}, {{$ctrl.event.region}}</p>
 				</address>
 
-				<button ng-class="$ctrl.favorite ? 'btn btn-danger' : 'btn'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
+				<button ng-class="$ctrl.favorite ? 'btn btn-danger' : 'btn btn-default'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
 				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
 			</div>
 		</div>
