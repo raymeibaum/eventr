@@ -11,6 +11,7 @@ function UserShowController($stateParams, UserService, EventService) {
   var vm = this;
 
   vm.user = {};
+	vm.loggedInUser = {};
   vm.comments = [];
   vm.favorites = [];
   vm.eventfulFavorites = [];
@@ -19,27 +20,32 @@ function UserShowController($stateParams, UserService, EventService) {
 
 	function activate() {
 		getUser()
+		getLoggedInUser()
 	}
 
 	function getUser() {
 		UserService
 			.getUser($stateParams.id)
 			.then(function assignUser(response) {
-				console.log(response.data);
 				vm.user = response.data.user;
-                vm.comments = response.data.comments;
-                vm.favorites = response.data.favorites;
-                vm.favorites.forEach(function(favorite){
-                    EventService
-                        .getEvent(favorite.event_id)
-                        .then(function logResponse(response){
-                            console.log(response);
-                            vm.eventfulFavorites.push(response.data.eventful)
-                            
-                        })
-                })
+        vm.comments = response.data.comments;
+        vm.favorites = response.data.favorites;
+        vm.favorites.forEach(function(favorite){
+          EventService
+              .getEvent(favorite.event_id)
+              .then(function pushFavoritesIntoFavoritesArray(response){
+                vm.eventfulFavorites.push(response.data.eventful)
 
+              })
+        })
 			});
+	}
+	function getLoggedInUser() {
+		UserService
+			.getLoggedInUser()
+			.then(function(response) {
+				vm.loggedInUser = response.data.current_user;
+			})
 	}
 
 }

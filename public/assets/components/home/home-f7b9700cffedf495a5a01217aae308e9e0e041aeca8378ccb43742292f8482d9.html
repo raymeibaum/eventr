@@ -1,0 +1,80 @@
+<div class="home">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="page-header">
+				<h2 ng-bind="$ctrl.currentLocation"></h2>
+			</div>
+			<div class="google-map">
+				<div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+				  <ng-map
+						center="{{$ctrl.mapLatLng}}"
+						zoom="{{$ctrl.mapZoom}}"
+						zoom-to-include-markers="auto">
+						<marker
+							ng-repeat="event in $ctrl.eventsList"
+							position="[{{event.latitude}}, {{event.longitude}}]"
+							title="{{event.title}}"
+							id="{{event.id}}"
+							on-click="$ctrl.pinClicked()">
+						</marker>
+				  </ng-map>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="page-header">
+				<h2>Events</h2>
+			</div>
+			<div class="categories">
+				<div class="row">
+					<div class="col-xs-7">
+						<select
+							class="form-control"
+							ng-model="$ctrl.selectedCategory"
+							ng-change="$ctrl.getEventsWithSpecifics()"
+							ng-disabled="$ctrl.categoryDisabled">
+							<option value="">Select category</option>
+							<option value="all">All</option>
+							<!-- TODO: Sanitize category.name to display & correctly-->
+							<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
+						</select>
+					</div>
+					<div class="col-xs-5">
+						<select
+							class="form-control"
+							ng-model="$ctrl.selectedDate"
+							ng-change="$ctrl.getEventsWithSpecifics()"
+							ng-disabled="$ctrl.categoryDisabled">
+							<option value="">Select date</option>
+							<option value="today">Today</option>
+							<option value="tomorrow">Tomorrow</option>
+							<option value="this week">This week</option>
+							<option value="next week">Next week</option>
+						</select>
+					</div>
+				</div>
+
+				<br>
+			</div>
+			<div class="events-list">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Event</th>
+							<th>Date</th>
+				    </tr>
+					</thead>
+					<tbody>
+						<tr ng-hide="$ctrl.eventsList.length">
+							<td>No Events to show</td>
+						</tr>
+						<tr ng-repeat="event in $ctrl.eventsList | orderBy: 'start_time'" ng-mouseover="$ctrl.moveMapToEvent(event)">
+							<td><a ui-sref="eventShow({ id: event.id })">{{event.title}}</a></td>
+							<td>{{event.start_time | date: 'shortDate'}}</td>
+				    </tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
