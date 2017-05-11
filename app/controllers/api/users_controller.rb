@@ -4,6 +4,6 @@ class Api::UsersController < ApplicationController
     favorites = user.favorites
     comments = user.comments
 
-	render json: {user: user, comments: comments, favorites: favorites}
+		render json: {user: user, comments: comments, favorites: favorites}
   end
 end
