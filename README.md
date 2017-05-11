@@ -17,7 +17,7 @@
 
 
 ## Wireframes
-
+![ERD](./Eventr_Wireframes.pdf)
 
 ## User Stories
 [Trello Board](https://trello.com/b/RYYZ9RRd/project-4)
