@@ -24,14 +24,14 @@
             </div>
 		</div>
 		<div class="col-md-8">
-			<h2>Favorited Events</h2>
+			<h3>Favorited Events</h3>
 			<em ng-hide="$ctrl.eventfulFavorites.length">No favorited events.</em>
 			<div id="recent-favorites">
 				<ul>
 				<h6><li ng-repeat="favorite in $ctrl.eventfulFavorites"> <a ui-sref="eventShow({ id: favorite.id })"><i class="fa fa-heart" aria-hidden="true"></i> {{favorite.title}}</a></li></h6>
 				</ul>
 			</div>
-			<h2>Recent Comments</h2>
+			<h3>Recent Comments</h3>
 			<div id="recent-comments-box">
 				<em ng-hide="$ctrl.comments.length">No comments.</em>
 				<div id="recent-comments" ng-repeat="comment in $ctrl.comments">
