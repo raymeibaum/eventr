@@ -5,9 +5,16 @@
 					<h1 ng-bind="$ctrl.event.title"></h1>
 				</div>
 
-				<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+				<div ng-hide="$ctrl.event.images.image.large.url">
+				<!-- <div ng-hide="{{$ctrl.event.images.image.large.url.length > 0}}"> -->
+					<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&markers=color:blue%7Clabel:S%{{$ctrl.event.latitude}}|{{$ctrl.event.longitude}}&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+				</div>
 
-				<img class="img-responsive" ng-src="{{$ctrl.event.images.image.large.url}}">
+				<div ng-show="$ctrl.event.images.image.large.url">
+				<!-- <div ng-show="{{$ctrl.event.images.image.large.url.length > 0}}"> -->
+					<img class="img-responsive" ng-src="{{$ctrl.event.images.image.large.url}}">
+				</div>
+
 				<div class="social-media">
 					<h5>Share with friends</h5>
 					<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590cb1f7fb866f64" type="text/javascript">
