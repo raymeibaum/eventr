@@ -31,13 +31,11 @@
 	</ul>
 			<h2>Recent Comments</h2>
 			<em ng-hide="$ctrl.comments.length">No comments.</em>
-			<div ng-repeat="comment in $ctrl.comments">
-
-
+			<div id="recent-comments" ng-repeat="comment in $ctrl.comments">
 				<h5><a ui-sref="eventShow({ id: comment.event.event_id })">{{comment.activity.title}}</a></h5>
 				<p>{{comment.activity.content}}</p>
-				<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }}</p>
 				<hr>
+				<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }}</p>
 			</div>
 
 
