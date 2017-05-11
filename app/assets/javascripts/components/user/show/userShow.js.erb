@@ -5,15 +5,13 @@ angular
     controller: UserShowController
   });
 
-UserShowController.$inject = ['$stateParams', 'UserService', 'CommentService'];
+UserShowController.$inject = ['$stateParams', 'UserService'];
 
-function UserShowController($stateParams, UserService, CommentService) {
+function UserShowController($stateParams, UserService) {
   var vm = this;
 
   vm.user = {};
   vm.comments = [];
-  vm.addToCommentsArray = addToCommentsArray;
-  vm.deleteComment = deleteComment;
 
 	activate()
 
@@ -26,21 +24,10 @@ function UserShowController($stateParams, UserService, CommentService) {
 			.getUser($stateParams.id)
 			.then(function assignUser(response) {
 				console.log(response.data);
-				vm.user = response.data;
+				vm.user = response.data.user;
+                vm.comments = response.data.comments;
+                console.log(vm.user.first_name);
 			});
 	}
 
-    function deleteComment(id) {
-		CommentService
-			.deleteComment($stateParams.id, id)
-			.then(function(response) {
-                // vm.comments.splice = []
-                vm.comments = [];
-				response.data.comments.forEach(addToCommentsArray)
-			});
-	}
-
-    function addToCommentsArray(comment) {
-        vm.comments.push(comment);
-    }
 }

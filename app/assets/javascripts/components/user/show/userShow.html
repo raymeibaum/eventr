@@ -30,15 +30,12 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<h2>Recent Comments</h2>
 			<br>
-			<div ng-repeat="comment in $ctrl.user.comments">
+			<div ng-repeat="comment in $ctrl.comments">
 
-				<button ng-click="$ctrl.deleteComment(comment.id)" ng-show="comment.user.id === $ctrl.currentUser.id" type="button" class="close" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
 
-				<h5>{{comment.title}}</h5>
-				<p>{{comment.content}}</p>
-				<p class="meta-comment"><b>Created:</b> {{comment.created_at | date : "fullDate" }}</p>
+				<h5><a ui-sref="eventShow({ id: comment.event.event_id })">{{comment.activity.title}}</a></h5>
+				<p>{{comment.activity.content}}</p>
+				<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }}</p>
 				<hr>
 			</div>
 
