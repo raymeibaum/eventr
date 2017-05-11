@@ -18,7 +18,7 @@ class User < ApplicationRecord
 	def favorites
 		favorites = []
 		actions.where(activity_type: "Favorite").each do |action|
-			favorites << action.activity
+			favorites << action.event
 		end
 		favorites
 	end

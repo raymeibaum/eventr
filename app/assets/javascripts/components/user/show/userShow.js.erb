@@ -5,13 +5,15 @@ angular
     controller: UserShowController
   });
 
-UserShowController.$inject = ['$stateParams', 'UserService'];
+UserShowController.$inject = ['$stateParams', 'UserService', 'EventService'];
 
-function UserShowController($stateParams, UserService) {
+function UserShowController($stateParams, UserService, EventService) {
   var vm = this;
 
   vm.user = {};
   vm.comments = [];
+  vm.favorites = [];
+  vm.eventfulFavorites = [];
 
 	activate()
 
@@ -26,7 +28,17 @@ function UserShowController($stateParams, UserService) {
 				console.log(response.data);
 				vm.user = response.data.user;
                 vm.comments = response.data.comments;
-                console.log(vm.user.first_name);
+                vm.favorites = response.data.favorites;
+                vm.favorites.forEach(function(favorite){
+                    EventService
+                        .getEvent(favorite.event_id)
+                        .then(function logResponse(response){
+                            console.log(response);
+                            vm.eventfulFavorites.push(response.data.eventful)
+                            
+                        })
+                })
+
 			});
 	}
 
