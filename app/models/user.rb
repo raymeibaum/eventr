@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	def comments
 		comments = []
 		actions.where(activity_type: "Comment").each do |action|
-			comments << action.activity
+			comments << {activity: action.activity, event: action.event}
 		end
 		comments
 	end
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 	def favorites
 		favorites = []
 		actions.where(activity_type: "Favorite").each do |action|
-			favorites << action.activity
+			favorites << action.event
 		end
 		favorites
 	end
