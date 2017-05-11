@@ -1,4 +1,4 @@
-#![EVENTR](./app/assets/images/EVENT-logo.png)
+![EVENTR](./app/assets/images/EVENT-logo.png)
 **An application for finding local events**
 
 ## Getting Started
