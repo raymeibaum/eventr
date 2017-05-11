@@ -109,3 +109,48 @@ address.user-details.ng-binding {
 .meta a:hover {
     color: rgba(0, 0, 0, .87);
 }
+
+#recent-comments {
+	background-color: #f8f8f8;
+	margin-top: 15px;
+	padding: 15px;
+	border-radius: 9px;
+}
+
+#recent-favorites li {
+	list-style-type: none;
+}
+
+#recent-favorites .fa-heart {
+	color: #d46666;
+	margin: 5px;
+}
+
+#recent-comments-box {
+	border-radius: 3px;
+	border: none;
+	padding: 5px;
+	width: 100%;
+	height: 600px;
+	overflow: scroll;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #f8f8f8;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #f8f8f8;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #f8f8f8;
+}
