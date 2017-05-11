@@ -37,6 +37,7 @@ gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
 gem 'httparty'
+gem 'nokogiri'
 
 gem 'font-awesome-sass', '~> 4.7.0'
 
