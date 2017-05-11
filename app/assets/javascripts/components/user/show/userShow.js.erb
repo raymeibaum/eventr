@@ -5,15 +5,15 @@ angular
     controller: UserShowController
   });
 
-UserShowController.$inject = ['$stateParams', 'UserService', 'CommentService'];
+UserShowController.$inject = ['$stateParams', 'UserService', 'EventService'];
 
-function UserShowController($stateParams, UserService, CommentService) {
+function UserShowController($stateParams, UserService, EventService) {
   var vm = this;
 
   vm.user = {};
   vm.comments = [];
-  vm.addToCommentsArray = addToCommentsArray;
-  vm.deleteComment = deleteComment;
+  vm.favorites = [];
+  vm.eventfulFavorites = [];
 
 	activate()
 
@@ -26,21 +26,20 @@ function UserShowController($stateParams, UserService, CommentService) {
 			.getUser($stateParams.id)
 			.then(function assignUser(response) {
 				console.log(response.data);
-				vm.user = response.data;
+				vm.user = response.data.user;
+                vm.comments = response.data.comments;
+                vm.favorites = response.data.favorites;
+                vm.favorites.forEach(function(favorite){
+                    EventService
+                        .getEvent(favorite.event_id)
+                        .then(function logResponse(response){
+                            console.log(response);
+                            vm.eventfulFavorites.push(response.data.eventful)
+                            
+                        })
+                })
+
 			});
 	}
 
-    function deleteComment(id) {
-		CommentService
-			.deleteComment($stateParams.id, id)
-			.then(function(response) {
-                // vm.comments.splice = []
-                vm.comments = [];
-				response.data.comments.forEach(addToCommentsArray)
-			});
-	}
-
-    function addToCommentsArray(comment) {
-        vm.comments.push(comment);
-    }
 }
