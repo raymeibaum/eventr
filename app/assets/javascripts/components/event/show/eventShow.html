@@ -18,15 +18,16 @@
 				</div>
 				<p class="lead" ng-bind="$ctrl.event.description"></p>
 				<h3>When</h3>
-				<p>{{$ctrl.event.start_time | date : "fullDate"}}</p>
+				<h6>{{$ctrl.event.start_time | date : "fullDate"}}</h6>
+				<br>
 				<h3>Location</h3>
 				<address>
-					<strong>{{$ctrl.event.venue_name}}</strong><br>
-					{{$ctrl.event.address}}<br>
-					{{$ctrl.event.city}}, {{$ctrl.event.region}}
+					<h6>{{$ctrl.event.venue_name}}</h6>
+					<p>{{$ctrl.event.address}}<br>
+					{{$ctrl.event.city}}, {{$ctrl.event.region}}</p>
 				</address>
 
-				<button ng-class="$ctrl.favorite ? 'btn btn-success' : 'btn btn-danger'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
+				<button class="favorite" ng-class="$ctrl.favorite ? 'btn btn-danger' : 'btn'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
 				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
 			</div>
 		</div>
