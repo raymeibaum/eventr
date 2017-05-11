@@ -12,6 +12,8 @@
                         <h4 class="card-title">{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</h4>
                         <div class="meta">
                             <p>{{$ctrl.user.email}}</p>
+														<p><i class="fa fa-heart" aria-hidden="true"></i> {{$ctrl.eventfulFavorites.length}} | <i class="fa fa-commenting-o" aria-hidden="true"></i>
+ 														{{$ctrl.comments.length}}</p>
                         </div>
                         <div class="card-text">
 													<a ng-show="$ctrl.user.id === $ctrl.loggedInUser.id" id="edit-btn" href="/users/edit" target="_self" class="btn btn-default">Edit Account</a>
