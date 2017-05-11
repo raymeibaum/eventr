@@ -43,12 +43,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .login-content-desktop {
     border-left: thin solid #000;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .login-logo {
-    width: 200px;
-    align-items: center;
-    margin: 30px;
+    width: 400px;
+    margin: 0;
+    text-align: center;
+    display: inline;
+}
+
+.login-logo {
+  overflow: hidden;
+  object-fit: cover;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
 }
 
 .form-group {
