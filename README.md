@@ -1,4 +1,4 @@
-![EVENTR](./app/assets/images/EVENT-logo.png)
+![EVENTR](./app/assets/images/EVENT-logo.png "https://eventr-application.herokuapp.com/")
 **An application for finding local events**
 
 ## Getting Started
