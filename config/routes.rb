@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 		get 'auth/user', to: 'auth#get_user'
   end
 
+	# client
 	get 'home', to: 'client#index'
+	get 'about', to: 'client#about'
 	root to: 'client#home'
 
 	get '*path', to: 'client#index'
