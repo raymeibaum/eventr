@@ -236,3 +236,34 @@ a.navbar-brand {
 
 /* About Page Style
 -------------------------------------------------- */
+
+.about .banner {
+  background-image: url("https://source.unsplash.com/ePfBHXM0tyA");
+  background-position: bottom;
+  background-size: cover;
+  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 450px;
+  color: white;
+}
+
+.banner .content {
+  position: relative;
+  text-align: center;
+  top: 40%;
+  color: white;
+    -webkit-animation-duration: 7s;
+    -moz-animation-duration: 7s;
+    -ms-animation-duration: 7s;
+}
+
+.banner .content h1 {
+  font-size: 80px;
+  font-size: 7vw;
+  font-weight: 600;
+  letter-spacing: .1em;
+  margin: 0px;
+}
