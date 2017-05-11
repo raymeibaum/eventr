@@ -54,6 +54,7 @@ function EventShowController($rootScope, $state, $stateParams, CommentService, E
 				console.log(response.data)
 
 				vm.event = response.data.eventful;
+				vm.event.start_time = new Date(response.data.eventful.start_time);
 				vm.favorite = response.data.favorite;
 
 				vm.comments = [];

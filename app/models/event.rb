@@ -18,7 +18,6 @@ class Event < ApplicationRecord
 	 	parsed.each do |category|
 			category["name"] = Nokogiri::HTML(category["name"]).text
 		end
-		binding.pry
 		parsed
 	end
 

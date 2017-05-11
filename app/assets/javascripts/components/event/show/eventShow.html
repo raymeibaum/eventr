@@ -1,14 +1,10 @@
 <div class="eventShow">
 		<div class="row">
 			<div class="col-md-8">
-				<h2>{{$ctrl.event.title}}</h2><br>
-				<h5>{{$ctrl.event.venue_name}}</h5>
-				<h6>{{$ctrl.event.city}}, {{$ctrl.event.region}}</h6><br>
-				<h6><b>Category:</b> <a href=
-				"/events/categories/{{$ctrl.event.categories.category[0].id}}">{{$ctrl.event.categories.category[0].id}}</a></h6><br>
-
-				<img alt="Event Image" src="{{$ctrl.event.images.image.medium.url}}" width="250px"><br>
-				<br>
+				<div class="page-header">
+					<h1 ng-bind="$ctrl.event.title"></h1>
+				</div>
+				<img class="img-responsive" ng-src="{{$ctrl.event.images.image.large.url}}">
 				<div class="social-media">
 					<h5>Share with friends</h5>
 					<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590cb1f7fb866f64" type="text/javascript">
@@ -16,15 +12,20 @@
 					<div class="addthis_inline_share_toolbox"></div>
 				</div>
 			</div>
-			<div class="event-details col col-md-4">
-				<h3>Event Details:</h3>
-				<p>{{$ctrl.event.description}}</p><br>
-				<h5>When:</h5>
-				<p>{{$ctrl.event.start_time | date : "fullDate"}}</p><br>
-				<h5>Location:</h5>
-				<p>{{$ctrl.event.venue_name}}</p>
-				<p>{{$ctrl.event.address}}</p>
-				<p>{{$ctrl.event.city}}, {{$ctrl.event.region}}</p><br>
+			<div class="event-details col-md-4">
+				<div class="page-header">
+					<h1>Event Details</h1>
+				</div>
+				<p class="lead" ng-bind="$ctrl.event.description"></p>
+				<h3>When</h3>
+				<p>{{$ctrl.event.start_time | date : "fullDate"}}</p>
+				<h3>Location</h3>
+				<address>
+					<strong>{{$ctrl.event.venue_name}}</strong><br>
+					{{$ctrl.event.address}}<br>
+					{{$ctrl.event.city}}, {{$ctrl.event.region}}
+				</address>
+
 				<button ng-class="$ctrl.favorite ? 'btn btn-success' : 'btn btn-danger'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
 				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
 			</div>
