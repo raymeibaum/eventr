@@ -14,9 +14,7 @@
                             <p>{{$ctrl.user.email}}</p>
                         </div>
                         <div class="card-text">
-													<form id="edit-btn" action="/users/edit">
-														<input type="submit" class="btn btn-default" value="Edit Account">
-													</form>
+													<a ng-show="$ctrl.user.id === $ctrl.loggedInUser.id" id="edit-btn" href="/users/edit" target="_self" class="btn btn-default">Edit Account</a>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -27,11 +25,12 @@
 		</div>
 		<div class="col-md-8">
 			<h2>Favorited Events</h2>
+			<em ng-hide="$ctrl.eventfulFavorites.length">No favorited events.</em>
 	<ul>
 	<li ng-repeat="favorite in $ctrl.eventfulFavorites"><a ui-sref="eventShow({ id: favorite.id })">{{favorite.title}}</a></li>
 	</ul>
 			<h2>Recent Comments</h2>
-			<br>
+			<em ng-hide="$ctrl.comments.length">No comments.</em>
 			<div ng-repeat="comment in $ctrl.comments">
 
 
