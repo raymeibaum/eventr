@@ -1,8 +1,7 @@
 class ClientController < ApplicationController
   layout false
   layout 'application', :except => [:home, :about]
-  skip_before_action :authenticate_user!, :only => [:home]
-  skip_before_action :authenticate_user!, :only => [:about]
+  skip_before_action :authenticate_user!, :only => [:home, :about]
 
 
   def index
