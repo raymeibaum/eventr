@@ -34,7 +34,7 @@
 							ng-change="$ctrl.getEventsWithSpecifics()"
 							ng-disabled="$ctrl.categoryDisabled">
 							<option value="">Select category</option>
-							<option value="all">all</option>
+							<option value="all">All</option>
 							<!-- TODO: Sanitize category.name to display & correctly-->
 							<option ng-repeat="category in $ctrl.categories" value="{{category.id}}" ng-bind="category.name"></option>
 						</select>

@@ -23,11 +23,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Eventr</a>
+          <a class="navbar-brand" href="/home">Eventr</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-						<li><%= link_to icon('home') + " Home", root_path %></li>
+						<li><%= link_to icon('home') + " Home", home_path %></li>
 						<li><a ui-sref="userShow({id: <%= current_user.id %> })"><%= icon('user') %> Profile</a></li>
 		        <li><%= link_to icon('sign-out') + " Sign out", destroy_user_session_path, method: 'delete', target: '_self' %></li>
           </ul>
