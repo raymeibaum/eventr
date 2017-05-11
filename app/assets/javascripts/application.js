@@ -24,12 +24,8 @@ angular
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/home',
         component: 'home'
-      })
-      .state('splash', {
-        url: '/splash',
-        component: 'splash'
       })
 			.state('userShow', {
 				url: '/users/:id',
