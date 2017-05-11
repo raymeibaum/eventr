@@ -1,4 +1,4 @@
-![EVENTR](./app/assets/images/EVENT-logo.png "https://eventr-application.herokuapp.com/")
+![EVENTR](./app/assets/images/EVENT-logo.png)
 **An application for finding local events**
 
 ## Getting Started
@@ -8,7 +8,7 @@
 4. Next, type `rails s`
 5. Now, navigate to `localhost:3000`
 
-You should be greated by the Eventr splash page
+You should be greeted by the Eventr splash page
 
 ## Features
 - The user can signup/signin

@@ -1,51 +1,49 @@
 <div class="userShow">
-		<div class="page-header">
-			<h1>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}'s Profile</h1>
+	<div class="page-header">
+		<h1>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}'s Profile</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+
+			<div class="mt-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{$ctrl.user.photo_url}}">
+                    <div class="card-block">
+                        <h4 class="card-title">{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</h4>
+                        <div class="meta">
+                            <p>{{$ctrl.user.email}}</p>
+														<p><i class="fa fa-heart" aria-hidden="true"></i> {{$ctrl.eventfulFavorites.length}} | <i class="fa fa-commenting-o" aria-hidden="true"></i>
+ 														{{$ctrl.comments.length}}</p>
+                        </div>
+                        <div class="card-text">
+													<a ng-show="$ctrl.user.id === $ctrl.loggedInUser.id" id="edit-btn" href="/users/edit" target="_self" class="btn btn-default">Edit Account</a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">Joined {{$ctrl.user.created_at | date: 'longDate'}}</span>
+                    </div>
+                </div>
+            </div>
 		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="mt-4">
-					<div class="card">
-						<img class="card-img-top" src="{{$ctrl.user.photo_url}}">
-						<div class="card-block">
-							<h4 class="card-title">{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</h4>
-							<div class="meta">
-								<p>{{$ctrl.user.email}}</p>
-								<p><i aria-hidden="true" class="fa fa-heart"></i> {{$ctrl.eventfulFavorites.length}} | <i aria-hidden="true"
-								class="fa fa-commenting-o"></i> {{$ctrl.comments.length}}</p>
-							</div>
-							<div class="card-text">
-								<a class="btn btn-default" href="/users/edit" id="edit-btn" target="_self">Edit Account</a>
-							</div>
-						</div>
-						<div class="card-footer">
-							<span class="float-right">Joined {{$ctrl.user.created_at | date: 'longDate'}}</span>
-						</div>
-					</div>
-				</div>
+		<div class="col-md-8">
+			<h3>Favorited Events</h3>
+			<em ng-hide="$ctrl.eventfulFavorites.length">No favorited events.</em>
+			<div id="recent-favorites">
+				<ul>
+				<h6><li ng-repeat="favorite in $ctrl.eventfulFavorites"> <a ui-sref="eventShow({ id: favorite.id })"><i class="fa fa-heart" aria-hidden="true"></i> {{favorite.title}}</a></li></h6>
+				</ul>
 			</div>
-			<div class="col-md-8">
-				<h3>Favorited Events</h3><em>No favorited events.</em>
-				<div id="recent-favorites">
-					<ul>
-						<li style="list-style: none; display: inline">
-							<h6></h6>
-						</li>
-						<li>
-							<a><i aria-hidden="true" class="fa fa-heart"></i> {{favorite.title}}</a>
-						</li>
-					</ul>
-				</div>
-				<h3>Recent Comments</h3>
-				<div id="recent-comments-box">
-					<em>No comments.</em>
-					<div id="recent-comments">
-						<h5><a>{{comment.activity.title}}</a></h5>
-						<p>{{comment.activity.content}}</p>
-						<hr>
-						<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }}</p>
-					</div>
+			<h3>Recent Comments</h3>
+			<div id="recent-comments-box">
+				<em ng-hide="$ctrl.comments.length">No comments.</em>
+				<div id="recent-comments" ng-repeat="comment in $ctrl.comments">
+					<h5><a ui-sref="eventShow({ id: comment.event.event_id })">{{comment.activity.title}}</a></h5>
+					<p>{{comment.activity.content}}</p>
+					<hr>
+					<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }}</p>
 				</div>
 			</div>
 		</div>
 	</div>
+
+</div>
