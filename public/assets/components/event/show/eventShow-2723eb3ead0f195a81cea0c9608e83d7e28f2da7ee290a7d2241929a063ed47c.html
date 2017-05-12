@@ -1,0 +1,76 @@
+<div class="eventShow">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="page-header">
+					<h1 ng-bind="$ctrl.event.title"></h1>
+				</div>
+
+				<div ng-hide="$ctrl.event.images.image.large.url">
+				<!-- <div ng-hide="{{$ctrl.event.images.image.large.url.length > 0}}"> -->
+					<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&markers=size:normal%7Ccolor:blue%7Clabel:E%7C{{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+				</div>
+
+				<div ng-show="$ctrl.event.images.image.large.url">
+				<!-- <div ng-show="{{$ctrl.event.images.image.large.url.length > 0}}"> -->
+					<img class="img-responsive" ng-src="{{$ctrl.event.images.image.large.url}}">
+				</div>
+
+				<div class="social-media">
+					<h5>Share with friends</h5>
+					<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590cb1f7fb866f64" type="text/javascript">
+					</script>
+					<div class="addthis_inline_share_toolbox"></div>
+				</div>
+			</div>
+			<div class="event-details col-md-4">
+				<div class="page-header">
+					<h1>Event Details</h1>
+				</div>
+				<p class="lead" ng-bind="$ctrl.event.description"></p>
+				<h3>When</h3>
+				<h6>{{$ctrl.event.start_time | date : "fullDate"}}</h6>
+				<br>
+				<h3>Location</h3>
+				<address>
+					<h6>{{$ctrl.event.venue_name}}</h6>
+					<p>{{$ctrl.event.address}}<br>
+					{{$ctrl.event.city}}, {{$ctrl.event.region}}</p>
+				</address>
+
+				<button ng-class="$ctrl.favorite ? 'btn btn-danger' : 'btn btn-default'" ng-click="$ctrl.toggleFavorite()"><i class="fa fa-heart" aria-hidden="true"></i></button> <a class="btn btn-primary" href="{{$ctrl.event.links.link[0].url}}" target="_blank">Register</a> <a class=
+				"btn btn-default" href="{{$ctrl.event.url}}" target="_blank">See More</a>
+			</div>
+		</div>
+		<hr>
+		<div class="event-comments">
+			<h2>Comments</h2>
+			<em ng-hide="$ctrl.comments.length">No comments.</em>
+			<div id="comment-field" ng-repeat="comment in $ctrl.comments" style="margin-left: 2em">
+				<button ng-click="$ctrl.deleteComment(comment.activity.id)"ng-show="comment.user.id === $ctrl.currentUser.id" type="button" class="close" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4>{{comment.activity.title}}</h4>
+				<p>{{comment.activity.content}}</p><br>
+				<hr>
+				<p class="meta-comment"><b>Created:</b> {{comment.activity.created_at | date : "fullDate" }} | <b>Posted By: </b><a ui-sref="userShow({id: comment.user.id})">{{comment.user.first_name}} {{comment.user.last_name}}</a></p>
+			</div>
+			<br>
+			<h3>Add a Comment</h3>
+			<div class="add-comments">
+				<form id="add-comment-form" ng-submit="$ctrl.commentSubmit()">
+					<div class="form-group">
+						<label for=""><h6>Title:</h6></label>
+						<input class="form-control" ng-model="$ctrl.newComment.title" type="text" name="title" value="">
+					</div>
+					<div class="form-group">
+						<label for=""><h6>Description:</h6></label>
+						<textarea id="content-field" class="form-control" ng-model="$ctrl.newComment.content" type="text" name="content" value=""></textarea>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default" type="Submit" name="button">Submit</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
