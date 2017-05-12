@@ -1,5 +1,6 @@
 ![EVENTR](./app/assets/images/EVENT-logo.png)
-**An application for finding local events**
+
+An application for finding local events
 
 ## Getting Started
 1. Clone this repo
