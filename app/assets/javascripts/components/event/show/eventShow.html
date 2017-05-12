@@ -7,7 +7,7 @@
 
 				<div ng-hide="$ctrl.event.images.image.large.url">
 				<!-- <div ng-hide="{{$ctrl.event.images.image.large.url.length > 0}}"> -->
-					<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&markers=color:blue%7Clabel:S%{{$ctrl.event.latitude}}|{{$ctrl.event.longitude}}&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
+					<img id="event-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&zoom=14&size=480x480&markers=size:normal%7Ccolor:blue%7Clabel:E%7C{{$ctrl.event.latitude}},{{$ctrl.event.longitude}}&key=AIzaSyCZyqLNZP3P4zpkKiECu84Ukwz3a40caEM">
 				</div>
 
 				<div ng-show="$ctrl.event.images.image.large.url">
