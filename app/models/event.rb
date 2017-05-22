@@ -51,4 +51,28 @@ class Event < ApplicationRecord
 	def favorite(user)
 		actions.find_by(activity_type: "Favorite", user_id: user.id)
 	end
+
+	def add_comment(params)
+		comment = Comment.create(title: params[:title], content: params[:content])
+
+		action = Action.create(
+			user_id: params[:user_id],
+			event_id: self.id,
+			activity_id: comment.id,
+			activity_type: "Comment"
+			)
+	end
+
+	def remove_comment(user, comment_id)
+		action = Action.find_by(
+			event_id: self.id,
+			user_id: user.id,
+			comment_id: comment_id,
+			activity_type: "Comment"
+			)
+
+		comment = action.activity
+		comment.delete
+		action.delete
+	end
 end

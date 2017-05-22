@@ -1,9 +1,8 @@
 class Api::CommentsController < ApplicationController
 
 	def create
-		comment = Comment.create(title: params[:title], content: params[:content])
 		event = Event.find_or_create_by(event_id: params[:event_id])
-		comment_action = Action.create(user_id: current_user.id, event_id: event.id, activity_id: comment.id, activity_type: "Comment")
+		event.add_comment(comment_params)
 
 		render json: {comments: event.comments}
 
@@ -20,7 +19,7 @@ class Api::CommentsController < ApplicationController
 
 
   private
-      def post_params
+      def comment_params
         params.require(:comment)
           .permit(:title, :content)
           .merge(user_id: current_user.id, event_id: params[:event_id])
